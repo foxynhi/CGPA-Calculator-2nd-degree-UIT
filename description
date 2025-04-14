@@ -1,0 +1,187 @@
+🔧 1. Project Requirements Overview
+💻 Technologies Required
+
+    C++ programming language
+
+    Data Structures: Arrays, Structures
+
+    Algorithms: Basic Sorting (optional for display), Searching (if adding find features)
+
+    Arithmetic operations: For GPA, CGPA calculation
+
+    File Handling: To save/load student data
+
+📥 2. Inputs Needed from the User
+
+For each student, you need to collect:
+
+    Student ID / Name
+
+    Number of courses
+
+    For each course:
+
+        Course Name
+
+        Course Credit Hours (int)
+
+        Grade received (A, B, C, etc.)
+
+You’ll convert letter grades to numeric Grade Points:
+Grade	Grade Point
+A	4.0
+B	3.0
+C	2.0
+D	1.0
+F	0.0
+📤 3. Outputs of the Program
+
+For each student, display:
+
+    List of courses with grades and credit hours
+
+    Total credits
+
+    Total grade points
+
+    GPA for the semester
+
+    CGPA (can be same as GPA if one semester, or averaged if across semesters)
+
+    Optionally save data to file
+
+🧠 4. Formula
+
+GPA or CGPA = (Total Grade Points Earned) / (Total Credit Hours)
+Grade Point for a course = Grade Point * Course Credit Hours
+🏗️ 5. Step-by-Step Instructions
+Step 1: Define Structures
+
+Use a structure for course data:
+
+struct Course {
+    string name;
+    int creditHours;
+    char grade; // A, B, C, D, F
+};
+
+Optionally, define a student struct:
+
+struct Student {
+    string name;
+    string id;
+    vector<Course> courses;
+};
+
+Step 2: Input Course Data
+
+Prompt the user:
+
+    Name, ID
+
+    Number of courses
+
+    For each course: name, credit, and grade
+
+Use a loop to read all course data into an array or vector.
+Step 3: Convert Grades to Points
+
+Function to convert char grade to float grade point:
+
+float gradeToPoint(char grade) {
+    switch(toupper(grade)) {
+        case 'A': return 4.0;
+        case 'B': return 3.0;
+        case 'C': return 2.0;
+        case 'D': return 1.0;
+        case 'F': return 0.0;
+        default: return -1.0; // Invalid
+    }
+}
+
+Step 4: Calculate GPA / CGPA
+
+Loop through all courses:
+
+float totalGradePoints = 0, totalCredits = 0;
+for (Course c : student.courses) {
+    float points = gradeToPoint(c.grade);
+    totalGradePoints += points * c.creditHours;
+    totalCredits += c.creditHours;
+}
+float GPA = totalGradePoints / totalCredits;
+
+Step 5: Display Result
+
+Print:
+
+    Each course: name, credit, grade, grade point
+
+    Total credits
+
+    Total grade points
+
+    GPA
+
+    CGPA (if multiple semesters are considered)
+
+Step 6: Add File Handling (Optional but Useful)
+
+Save results to a .txt file:
+
+ofstream outFile("cgpa_report.txt");
+outFile << "Student Name: " << student.name << endl;
+// write course info and GPA here
+outFile.close();
+
+Also add a read function to retrieve previous records.
+Step 7: Add Optional Features
+
+    Multiple students
+
+    Save/load from file
+
+    Sorting courses by name or grade
+
+    Search student by ID or name
+
+🧾 Example Input/Output
+Input:
+
+Enter student name: John Doe
+Enter ID: 12345
+Enter number of courses: 3
+
+Course 1 name: Math
+Credit hours: 3
+Grade: A
+
+Course 2 name: Physics
+Credit hours: 4
+Grade: B
+
+Course 3 name: History
+Credit hours: 2
+Grade: C
+
+Output:
+
+Student: John Doe (ID: 12345)
+
+Courses:
+- Math      | Credits: 3 | Grade: A | Points: 12.0
+- Physics   | Credits: 4 | Grade: B | Points: 12.0
+- History   | Credits: 2 | Grade: C | Points: 4.0
+
+Total Credits: 9
+Total Grade Points: 28.0
+GPA: 3.11
+CGPA: 3.11
+
+📦 File Handling Bonus
+
+    Save each student’s data in a file.
+
+    Use CSV format or structured output.
+
+    Allow user to retrieve previous CGPA records.
