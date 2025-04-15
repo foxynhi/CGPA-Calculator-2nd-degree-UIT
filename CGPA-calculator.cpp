@@ -78,36 +78,45 @@ public:
 //Node for a Course
 struct Node
 {
-    Course c = Course();
-    Node* pNext = nullptr;
+    Course c;
+    Node* pNext;
 };
-
 Node* initNode(Course c)
 {
     Node* p = new Node;
     p->c = c;
     p->pNext = nullptr;
-
     return p;
 };
 
 //Linked list of courses in a semester
 struct Semester
 {
-    Node* pHead = nullptr;
+    Node* pHead;
 };
+void initSemester(Semester& s){
+    s.pHead = nullptr;
+}
 
 //List of courses a student takes overall
-struct CourseList
+typedef struct CourseList
 {
     private:
         Semester semester[N];
     public:
+        void initCourseList(CourseList& cList);
         void addCourse(Course c);
         friend ostream& operator<<(ostream& os, CourseList& cList);
-};
-typedef CourseList CL;
+} CL;
 
+void CourseList::initCourseList(CourseList& cList)
+{
+    for (int i = 0; i < N; i++){
+        Semester s;
+        initSemester(s);
+        semester[i+1] = s;
+    }
+};
 //add a course into CL
 void CourseList::addCourse(Course c)
 {   
@@ -162,6 +171,7 @@ void deleteCourse(const string& file, int targetId)
     ofstream out("temp.csv");
     string line;
     getline(in, line);
+    out << line <<'\n';
 
     while (getline(in, line)){
         stringstream s(line);
@@ -183,7 +193,8 @@ void deleteCourse(const string& file, int targetId)
 int main()
 {
     cout << "---------- CUMULATIVE GRADE POINT AVERAGE CALCULATOR ---------\nThis CGPA calculator is for 2nd Bachelor Degree in Information Technology at UIT.\n" << endl;
-    // // CL cList;
+    // CL cList;
+    // cList.initCourseList(cList);
     // Course c1(1, "a", 2, 1, 1, 10, 1);
     // cout << c1 << endl;
     // cList.addCourse(c1);
@@ -192,7 +203,9 @@ int main()
     // Course c2;
     // cin >> c2;
     // cout << c2;
-    // initCourseData();
+    initCourseData();
     deleteCourse("courses.csv", 1); 
+    // deleteCourse("courses.csv", 2); 
+    // deleteCourse("courses.csv", 3); 
     return 0;
 }
