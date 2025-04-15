@@ -1,2 +1,18 @@
 id,name,totalCredit,lectureCredit,labCredit,point,semester
-2,2,2,2,2,2,2
+IT001,Nhập môn lập trình,4,3,1,0,1
+IE005,Giới thiệu ngành Công nghệ Thông tin,1,1,0,0,1
+IT004,Cơ sở dữ liệu,4,3,1,0,1
+IT005,Nhập môn mạng máy tính,4,3,1,0,1
+IE101,Cơ sở hạ tầng Công nghệ thông tin,3,2,1,0,1
+IT002,Lập trình hướng đối tượng,4,3,1,0,2
+IT003,Cấu trúc dữ liệu và giải thuật,4,3,1,0,2
+IT012,Tổ chức và cấu trúc máy tính II,4,3,1,0,2
+MA004,Cấu trúc rời rạc,4,4,0,0,2
+IE103,Quản lý thông tin,4,3,1,0,3
+IE104,Internet và công nghệ Web,4,3,1,0,3
+IE106,Thiết kế giao diện người dùng,4,3,1,0,3
+IE105,Nhập môn bảo đảm và an ninh thông tin,4,3,1,0,4
+IE400,Chuyên đề tốt nghiệp,4,4,0,0,4
+IE505,Khóa luận tốt nghiệp,10,10,0,0,5
+IE505,Đồ án tốt nghiệp,6,6,0,0,5
+IE502,Đồ án tốt nghiệp tại doanh nghiệp,10,10,0,0,5

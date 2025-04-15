@@ -3,6 +3,7 @@
 #include <fstream>
 #include <sstream>
 #include <limits>
+#include <cstdio>
 using namespace std;
 
 const int N = 6;
@@ -10,7 +11,7 @@ const int N = 6;
 struct Course
 {
 private:
-    int id;
+    string id;
     string name;
     int tolCredit;  //Total Credit hours
     int lecCredit;  //Lecture Credit hours
@@ -19,29 +20,49 @@ private:
     int semester;
 public:
     Course()
-        : id(0), name(""), tolCredit(0), lecCredit(0), labCredit(0), point(0), semester(0) {}
-    Course(int i, string n, int t, int lec, int lab, float p, int s)
+        : id(""), name(""), tolCredit(0), lecCredit(0), labCredit(0), point(0), semester(0) {}
+    Course(string i, string n, int t, int lec, int lab, float p, int s)
         : id(i), name(n), tolCredit(t), lecCredit(lec), labCredit(lab), point(p), semester(s) {}
     Course(const Course& x)
         : id(x.id), name(x.name), tolCredit(x.tolCredit), lecCredit(x.lecCredit), labCredit(x.labCredit), point(x.point), semester(x.semester) {}
     ~Course(){};
     friend istream& operator>>(istream& is, Course& c);
     friend ostream& operator<<(ostream& os, Course& c);
-    int getId() {return id;}
+    Course operator=(Course& c);
+    string getId() {return id;}
     string getName() {return name;}
     int getTolCredit() {return tolCredit;}
     int getLecCredit() {return lecCredit;}
     int getLabCredit() {return labCredit;}
     int getPoint() {return point;}
     int getSemester() {return semester;}
+    void setId(string x) {id = x;}
+    void setName(string x) {name = x;}
+    void setTolCredit(int x) {tolCredit = x;}
+    void setLecCredit(int x) {lecCredit = x;}
+    void setLabCredit(int x) {labCredit = x;}
+    void setPoint(int x) {point = x;}
+    void setSemester(int x) {semester = x;}
+    string toCSV() const {
+        stringstream s;
+        s << id << ","
+        << name << "," 
+        << tolCredit << "," 
+        << lecCredit << "," 
+        << labCredit << "," 
+        << point << "," 
+        << semester;
+        return s.str();
+    };
 };
 istream& operator>>(istream& is, Course& c)
 {
-    cout << "Enter course data:\n";
+    cout << "\nEnter course data:\n";
     cout << "id: ";
-    is >> c.id;
-    cout << "name: ";
     is.ignore(numeric_limits<streamsize>::max(), '\n');
+    getline(is, c.id);
+    cout << "name: ";
+    // is.ignore(numeric_limits<streamsize>::max(), '\n');
     getline(is, c.name);
     cout << "total credits: ";
     is >> c.tolCredit;
@@ -60,6 +81,18 @@ ostream& operator<<(ostream& os, Course& c)
     os << "{" << c.id << "; " << c.name << "; " << c.tolCredit << "; " << c.lecCredit << "; " << c.labCredit << "; " << c.point << "; " << c.semester << "}" << endl;
     return os;
 };
+
+Course Course::operator=(Course& c)
+{
+    id = c.id;
+    name = c.name;
+    tolCredit = c.tolCredit;
+    lecCredit = c.lecCredit;
+    labCredit = c.labCredit;
+    point = c.point;
+    semester = c.semester;
+    return *this;
+}
 
 struct Student
 {
@@ -145,8 +178,23 @@ ostream& operator<<(ostream& os, CourseList& cList)
     return os;
 }
 
+// void addCourse2CSV(const string& file, Course c)
+// {
+//     ofstream fout(file, ios::app);
+//     if(!fout.is_open()){
+//         cerr << "Cannot write file." << endl;
+//         return;
+//     }
+//     fout.close();
+//     cout << "write data into file successfully!" << endl;
+// }
+
 void initCourseData()
 {
+    if (remove("courses.csv") == 0){
+        cout << "Replacing data..." << endl;
+    } else perror("Error replacing data...");
+
     ofstream fout("courses.csv");
     if(!fout.is_open()){
         cerr << "Cannot open file." << endl;
@@ -160,12 +208,68 @@ void initCourseData()
     Course c;
     for (int i = 0; i < n; i++){
         cin >> c;
-        fout << c.getId() << "," << c.getName() << "," << c.getTolCredit() << "," << c.getLecCredit() << "," << c.getLabCredit() << "," << c.getPoint() << "," << c.getSemester() << '\n';
+        fout << c.getId() << "," 
+            << c.getName() << "," 
+            << c.getTolCredit() << "," 
+            << c.getLecCredit() << "," 
+            << c.getLabCredit() << "," 
+            << c.getPoint() << "," 
+            << c.getSemester() << '\n';
     }
     fout.close();
 }
 
-void deleteCourse(const string& file, int targetId)
+void initCourseDataFromCSV(const string& csv)
+{
+    if (remove("courses.csv") == 0){
+        cout << "Replacing data..." << endl;
+    } else cout << "Creating csv file..." << endl;
+    ofstream fout("courses.csv");
+    if(!fout.is_open()){
+        cerr << "Cannot open file." << endl;
+        return;
+    }
+    fout << "id,name,totalCredit,lectureCredit,labCredit,point,semester\n";
+
+    ifstream fin(csv);
+    if (!fin.is_open()) {
+        cerr << "Cannot open input file." << endl;
+        return;
+    }
+
+    string line;
+    getline(fin, line);
+    while (getline(fin, line)){
+        stringstream ss(line);
+        string token;
+        string id, name;
+        int tolCre, lecCre, labCre, sem;
+
+        getline(ss, token, ',');
+        sem = stoi(token);
+
+        getline(ss, id, ',');
+
+        getline(ss, name, ',');
+
+        getline(ss, token, ',');
+        tolCre = stoi(token);
+
+        getline(ss, token, ',');
+        lecCre = stoi(token);
+
+        getline(ss, token, ',');
+        labCre = stoi(token);
+
+        Course c(id,name,tolCre,lecCre,labCre,0,sem);
+        fout << c.toCSV() << '\n';
+    }
+    fout.close();
+    fin.close();
+    cout << "Done!" << endl;
+}
+
+void deleteCourse(const string& file, string targetId)
 {
     ifstream in(file);
     ofstream out("temp.csv");
@@ -175,9 +279,8 @@ void deleteCourse(const string& file, int targetId)
 
     while (getline(in, line)){
         stringstream s(line);
-        string idStr;
-        getline(s, idStr, ',');
-        int id = stoi(idStr);
+        string id;
+        getline(s, id, ',');
 
         if (id != targetId){
             out << line << '\n';
@@ -189,6 +292,16 @@ void deleteCourse(const string& file, int targetId)
     remove(file.c_str());
     rename("temp.csv", file.c_str());
 }
+
+// void updateCourseData()
+// {
+
+// }
+
+// Course findCourse()
+// {
+
+// }
 
 int main()
 {
@@ -203,8 +316,8 @@ int main()
     // Course c2;
     // cin >> c2;
     // cout << c2;
-    initCourseData();
-    deleteCourse("courses.csv", 1); 
+    initCourseDataFromCSV("./rawData.csv");
+    // deleteCourse("courses.csv", 1); 
     // deleteCourse("courses.csv", 2); 
     // deleteCourse("courses.csv", 3); 
     return 0;

@@ -1,0 +1,5 @@
+---
+triple:          'arm64-apple-darwin'
+binary-path:     '/Users/nhi-mac/Programing/cpp-repo/CGPA-calculator'
+relocations:     []
+...
