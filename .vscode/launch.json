@@ -8,7 +8,7 @@
             "name": "(gdb) Launch",
             "type": "cppdbg",
             "request": "launch",
-            "program": "a.out",
+            "program": "./aout",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",

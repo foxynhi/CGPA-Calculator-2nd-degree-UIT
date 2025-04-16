@@ -10,11 +10,11 @@ using namespace std;
 
 void initDataManual2CSV()
 {
-    if (remove("course-data/courses.csv") == 0){
+    if (remove("/home/nhi/Practice/CGPA-calculator/course-data/courses.csv") == 0){
         cout << "Replacing data..." << endl;
-    } else perror("Error replacing data...");
+    } else cout << "Creating csv file..." << endl;
 
-    ofstream fout("course-data/courses.csv");
+    ofstream fout("/home/nhi/Practice/CGPA-calculator/course-data/courses.csv");
     if(!fout.is_open()){
         cerr << "Cannot open file." << endl;
         return;
@@ -40,13 +40,13 @@ void initDataManual2CSV()
 
 void initDataFromCSV2CSV(const string& csv)
 {
-    if (remove("course-data/courses.csv") == 0){
+    if (remove("/home/nhi/Practice/CGPA-calculator/course-data/courses.csv") == 0){
         cout << "Replacing data..." << endl;
     } else cout << "Creating csv file..." << endl;
 
-    ofstream fout("./course-data/courses.csv");
+    ofstream fout("/home/nhi/Practice/CGPA-calculator/course-data/courses.csv");
     if(!fout.is_open()){
-        cerr << "Cannot open file." << endl;
+        perror("Cannot open output file.");
         return;
     }
     fout << "id,name,totalCredit,lectureCredit,labCredit,point,semester\n";
@@ -54,6 +54,8 @@ void initDataFromCSV2CSV(const string& csv)
     ifstream fin(csv);
     if (!fin.is_open()) {
         cerr << "Cannot open input file." << endl;
+        fout.close();
+        fin.close();
         return;
     }
 
