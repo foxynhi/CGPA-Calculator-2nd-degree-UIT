@@ -1,0 +1,3 @@
+/home/nhi/Practice/CGPA-calculator/build/CMakeFiles/cgpa.dir
+/home/nhi/Practice/CGPA-calculator/build/CMakeFiles/edit_cache.dir
+/home/nhi/Practice/CGPA-calculator/build/CMakeFiles/rebuild_cache.dir

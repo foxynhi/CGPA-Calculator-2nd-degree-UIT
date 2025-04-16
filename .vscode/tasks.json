@@ -7,9 +7,15 @@
             "args": [
                 "-fdiagnostics-color=always",
                 "-g",
-                "${file}",
+                "main.cpp",
+                "Course.cpp",
+                "CourseList.cpp",
+                "Node.cpp",
+                "Semester.cpp",
+                "Student.cpp",
+                "CSVhandler.cpp",
                 "-o",
-                "${fileDirname}/${fileBasenameNoExtension}"
+                "CGPA-calculator"
             ],
             "options": {
                 "cwd": "${fileDirname}"
