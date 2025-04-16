@@ -19,9 +19,9 @@ int main()
     // Course c2;
     // cin >> c2;
     // cout << c2;
-    // initDataManual2CSV();
-    deleteCourseFromCSV("/home/nhi/Practice/CGPA-calculator/course-data/courses.csv", "1"); 
-    deleteCourseFromCSV("/home/nhi/Practice/CGPA-calculator/course-data/courses.csv", "2"); 
+    initDataFromCSV2CSV("/home/nhi/Practice/CGPA-calculator/course-data/rawData.csv");
+    // deleteCourseFromCSV("/home/nhi/Practice/CGPA-calculator/course-data/courses.csv", "1"); 
+    // deleteCourseFromCSV("/home/nhi/Practice/CGPA-calculator/course-data/courses.csv", "2"); 
     // deleteCourseFromCSV("course-data/courses.csv", 3);
 
     return 0;
