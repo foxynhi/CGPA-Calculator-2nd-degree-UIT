@@ -153,19 +153,19 @@ CMakeFiles/cgpa.dir/Student.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/cgpa.dir/Student.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/nhi/Practice/CGPA-calculator/Student.cpp -o CMakeFiles/cgpa.dir/Student.cpp.s
 
-CMakeFiles/cgpa.dir/CSVhandler.cpp.o: CMakeFiles/cgpa.dir/flags.make
-CMakeFiles/cgpa.dir/CSVhandler.cpp.o: /home/nhi/Practice/CGPA-calculator/CSVhandler.cpp
-CMakeFiles/cgpa.dir/CSVhandler.cpp.o: CMakeFiles/cgpa.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/nhi/Practice/CGPA-calculator/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/cgpa.dir/CSVhandler.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/cgpa.dir/CSVhandler.cpp.o -MF CMakeFiles/cgpa.dir/CSVhandler.cpp.o.d -o CMakeFiles/cgpa.dir/CSVhandler.cpp.o -c /home/nhi/Practice/CGPA-calculator/CSVhandler.cpp
+CMakeFiles/cgpa.dir/dataHandler.cpp.o: CMakeFiles/cgpa.dir/flags.make
+CMakeFiles/cgpa.dir/dataHandler.cpp.o: /home/nhi/Practice/CGPA-calculator/dataHandler.cpp
+CMakeFiles/cgpa.dir/dataHandler.cpp.o: CMakeFiles/cgpa.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/nhi/Practice/CGPA-calculator/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/cgpa.dir/dataHandler.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/cgpa.dir/dataHandler.cpp.o -MF CMakeFiles/cgpa.dir/dataHandler.cpp.o.d -o CMakeFiles/cgpa.dir/dataHandler.cpp.o -c /home/nhi/Practice/CGPA-calculator/dataHandler.cpp
 
-CMakeFiles/cgpa.dir/CSVhandler.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/cgpa.dir/CSVhandler.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/nhi/Practice/CGPA-calculator/CSVhandler.cpp > CMakeFiles/cgpa.dir/CSVhandler.cpp.i
+CMakeFiles/cgpa.dir/dataHandler.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/cgpa.dir/dataHandler.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/nhi/Practice/CGPA-calculator/dataHandler.cpp > CMakeFiles/cgpa.dir/dataHandler.cpp.i
 
-CMakeFiles/cgpa.dir/CSVhandler.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/cgpa.dir/CSVhandler.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/nhi/Practice/CGPA-calculator/CSVhandler.cpp -o CMakeFiles/cgpa.dir/CSVhandler.cpp.s
+CMakeFiles/cgpa.dir/dataHandler.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/cgpa.dir/dataHandler.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/nhi/Practice/CGPA-calculator/dataHandler.cpp -o CMakeFiles/cgpa.dir/dataHandler.cpp.s
 
 # Object files for target cgpa
 cgpa_OBJECTS = \
@@ -175,7 +175,7 @@ cgpa_OBJECTS = \
 "CMakeFiles/cgpa.dir/Node.cpp.o" \
 "CMakeFiles/cgpa.dir/Semester.cpp.o" \
 "CMakeFiles/cgpa.dir/Student.cpp.o" \
-"CMakeFiles/cgpa.dir/CSVhandler.cpp.o"
+"CMakeFiles/cgpa.dir/dataHandler.cpp.o"
 
 # External object files for target cgpa
 cgpa_EXTERNAL_OBJECTS =
@@ -186,7 +186,7 @@ cgpa: CMakeFiles/cgpa.dir/CourseList.cpp.o
 cgpa: CMakeFiles/cgpa.dir/Node.cpp.o
 cgpa: CMakeFiles/cgpa.dir/Semester.cpp.o
 cgpa: CMakeFiles/cgpa.dir/Student.cpp.o
-cgpa: CMakeFiles/cgpa.dir/CSVhandler.cpp.o
+cgpa: CMakeFiles/cgpa.dir/dataHandler.cpp.o
 cgpa: CMakeFiles/cgpa.dir/build.make
 cgpa: CMakeFiles/cgpa.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/nhi/Practice/CGPA-calculator/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX executable cgpa"

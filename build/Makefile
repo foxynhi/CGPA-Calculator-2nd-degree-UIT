@@ -129,30 +129,6 @@ cgpa/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/cgpa.dir/build.make CMakeFiles/cgpa.dir/build
 .PHONY : cgpa/fast
 
-CSVhandler.o: CSVhandler.cpp.o
-.PHONY : CSVhandler.o
-
-# target to build an object file
-CSVhandler.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cgpa.dir/build.make CMakeFiles/cgpa.dir/CSVhandler.cpp.o
-.PHONY : CSVhandler.cpp.o
-
-CSVhandler.i: CSVhandler.cpp.i
-.PHONY : CSVhandler.i
-
-# target to preprocess a source file
-CSVhandler.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cgpa.dir/build.make CMakeFiles/cgpa.dir/CSVhandler.cpp.i
-.PHONY : CSVhandler.cpp.i
-
-CSVhandler.s: CSVhandler.cpp.s
-.PHONY : CSVhandler.s
-
-# target to generate assembly for a file
-CSVhandler.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/cgpa.dir/build.make CMakeFiles/cgpa.dir/CSVhandler.cpp.s
-.PHONY : CSVhandler.cpp.s
-
 Course.o: Course.cpp.o
 .PHONY : Course.o
 
@@ -273,6 +249,30 @@ Student.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/cgpa.dir/build.make CMakeFiles/cgpa.dir/Student.cpp.s
 .PHONY : Student.cpp.s
 
+dataHandler.o: dataHandler.cpp.o
+.PHONY : dataHandler.o
+
+# target to build an object file
+dataHandler.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cgpa.dir/build.make CMakeFiles/cgpa.dir/dataHandler.cpp.o
+.PHONY : dataHandler.cpp.o
+
+dataHandler.i: dataHandler.cpp.i
+.PHONY : dataHandler.i
+
+# target to preprocess a source file
+dataHandler.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cgpa.dir/build.make CMakeFiles/cgpa.dir/dataHandler.cpp.i
+.PHONY : dataHandler.cpp.i
+
+dataHandler.s: dataHandler.cpp.s
+.PHONY : dataHandler.s
+
+# target to generate assembly for a file
+dataHandler.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/cgpa.dir/build.make CMakeFiles/cgpa.dir/dataHandler.cpp.s
+.PHONY : dataHandler.cpp.s
+
 main.o: main.cpp.o
 .PHONY : main.o
 
@@ -306,9 +306,6 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... cgpa"
-	@echo "... CSVhandler.o"
-	@echo "... CSVhandler.i"
-	@echo "... CSVhandler.s"
 	@echo "... Course.o"
 	@echo "... Course.i"
 	@echo "... Course.s"
@@ -324,6 +321,9 @@ help:
 	@echo "... Student.o"
 	@echo "... Student.i"
 	@echo "... Student.s"
+	@echo "... dataHandler.o"
+	@echo "... dataHandler.i"
+	@echo "... dataHandler.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

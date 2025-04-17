@@ -4,13 +4,13 @@
 #include "string"
 #include "Course.h"
 #include "CourseList.h"
-#include "CSVhandler.h"
+#include "dataHandler.h"
 using namespace std;
 
 int main()
 {
     cout << "---------- CUMULATIVE GRADE POINT AVERAGE CALCULATOR ---------\nThis CGPA calculator is for 2nd Bachelor Degree in Information Technology at UIT.\n" << endl;
-    // CL cl;
+    CL cl;
     // Course c1("it", "a", 2, 1, 1, 10, 1);
     // cout << c1 << endl;
     // cl.addCourse(c1);
@@ -19,10 +19,12 @@ int main()
     // Course c2;
     // cin >> c2;
     // cout << c2;
-    initDataFromCSV2CSV("/home/nhi/Practice/CGPA-calculator/course-data/rawData.csv");
+    // initDataFromCSV2CSV("/home/nhi/Practice/CGPA-calculator/course-data/rawData.csv");
     // deleteCourseFromCSV("/home/nhi/Practice/CGPA-calculator/course-data/courses.csv", "1"); 
     // deleteCourseFromCSV("/home/nhi/Practice/CGPA-calculator/course-data/courses.csv", "2"); 
     // deleteCourseFromCSV("course-data/courses.csv", 3);
 
+    cl.initDataFromCSV("/home/nhi/Practice/CGPA-calculator/course-data/courses.csv");
+    cout << cl << endl;
     return 0;
 }

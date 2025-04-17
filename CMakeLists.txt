@@ -11,5 +11,5 @@ add_executable(cgpa
     Node.cpp
     Semester.cpp
     Student.cpp
-    CSVhandler.cpp
+    dataHandler.cpp
 )

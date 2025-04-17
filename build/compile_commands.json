@@ -37,8 +37,8 @@
 },
 {
   "directory": "/home/nhi/Practice/CGPA-calculator/build",
-  "command": "/usr/bin/c++   -g -std=gnu++11 -o CMakeFiles/cgpa.dir/CSVhandler.cpp.o -c /home/nhi/Practice/CGPA-calculator/CSVhandler.cpp",
-  "file": "/home/nhi/Practice/CGPA-calculator/CSVhandler.cpp",
-  "output": "CMakeFiles/cgpa.dir/CSVhandler.cpp.o"
+  "command": "/usr/bin/c++   -g -std=gnu++11 -o CMakeFiles/cgpa.dir/dataHandler.cpp.o -c /home/nhi/Practice/CGPA-calculator/dataHandler.cpp",
+  "file": "/home/nhi/Practice/CGPA-calculator/dataHandler.cpp",
+  "output": "CMakeFiles/cgpa.dir/dataHandler.cpp.o"
 }
 ]

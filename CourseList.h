@@ -16,6 +16,11 @@ struct CourseList
     CourseList();
     void addCourse(Course c);
     friend ostream& operator<<(ostream& os, CourseList& cList);
+
+    //Initialize Course objects from CSV
+    void initDataFromCSV(const string& file);
+    void deleteCourse(string targetId, int sem);
+    void updateCourse(string targetId, string targetName, int tolCre, int lecCre, int labCre, int p, int sem);
 };
 typedef CourseList CL;
 
