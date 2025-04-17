@@ -74,12 +74,25 @@ void CourseList::initDataFromCSV(const string& file)
     in.close();
 }
 
-void CourseList::deleteCourse(string targetId, int sem)
+bool CourseList::deleteCourse(string targetId, int sem)
 {
-    Node* p = semester[sem].pHead;
-    for ( ; p != nullptr; p = p->pNext){
-        
+    Node* pPrev = nullptr;
+    Node* p = semester[sem-1].pHead;
+    while (p != nullptr){
+        if (p->c.id == targetId){
+            if (pPrev == nullptr){
+                semester[sem-1].pHead = p->pNext;
+            } else {
+                pPrev->pNext = p->pNext;
+            }
+            p->pNext = nullptr;
+            delete p;
+            return true;
+        }
+        pPrev = p;
+        p = p->pNext;
     }
+    return false;
 }
 
 void CourseList::updateCourse(string targetId, string targetName, int tolCre, int lecCre, int labCre, int p, int sem)

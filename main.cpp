@@ -26,5 +26,7 @@ int main()
 
     cl.initDataFromCSV("/home/nhi/Practice/CGPA-calculator/course-data/courses.csv");
     cout << cl << endl;
+    cout << "Delete successfully: "<< cl.deleteCourse("IE101", 1) << endl << endl;
+    cout << cl << endl;
     return 0;
 }
