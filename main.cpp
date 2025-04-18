@@ -24,9 +24,12 @@ int main()
     // deleteCourseFromCSV("/home/nhi/Practice/CGPA-calculator/course-data/courses.csv", "2"); 
     // deleteCourseFromCSV("course-data/courses.csv", 3);
 
-    cl.initDataFromCSV("/home/nhi/Practice/CGPA-calculator/course-data/courses.csv");
+    cl.initDataFromCSV("/Users/nhi-mac/Programing/cpp-repo/course-data/courses.csv");
     cout << cl << endl;
-    cout << "Delete successfully: "<< cl.deleteCourse("IE101", 1) << endl << endl;
+    // cout << "Delete successfully: "<< cl.deleteCourse("IE101", 1) << endl << endl;
+    // cout << cl << endl;
+
+    cl.updateCourse("IE101", "updated", 1,1,1,1,1);
     cout << cl << endl;
     return 0;
 }

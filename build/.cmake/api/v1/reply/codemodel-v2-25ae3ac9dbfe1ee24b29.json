@@ -39,7 +39,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "cgpa::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-cgpa-Debug-a5a382d90b07384d4f55.json",
+					"jsonFile" : "target-cgpa-Debug-505c1b0aeee1cb83fe31.json",
 					"name" : "cgpa",
 					"projectIndex" : 0
 				}
@@ -49,12 +49,12 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "/home/nhi/Practice/CGPA-calculator/build",
-		"source" : "/home/nhi/Practice/CGPA-calculator"
+		"build" : "/Users/nhi-mac/Programing/cpp-repo/build",
+		"source" : "/Users/nhi-mac/Programing/cpp-repo"
 	},
 	"version" : 
 	{
 		"major" : 2,
-		"minor" : 6
+		"minor" : 8
 	}
 }

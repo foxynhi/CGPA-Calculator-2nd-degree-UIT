@@ -74,6 +74,16 @@ void CourseList::initDataFromCSV(const string& file)
     in.close();
 }
 
+Node* CourseList::findNode(string targetId, int sem)
+{
+    for (Node* p = semester[sem-1].pHead; p != nullptr; p = p->pNext){
+        if (p->c.id == targetId){
+            return p;
+        }
+    }
+    return nullptr;
+}
+
 bool CourseList::deleteCourse(string targetId, int sem)
 {
     Node* pPrev = nullptr;
@@ -97,5 +107,13 @@ bool CourseList::deleteCourse(string targetId, int sem)
 
 void CourseList::updateCourse(string targetId, string targetName, int tolCre, int lecCre, int labCre, int p, int sem)
 {
-
+    Node* pCourse = findNode(targetId, sem);
+    if (!pCourse) return;
+    pCourse->c.id = targetId;
+    pCourse->c.name = targetName;
+    pCourse->c.tolCredit = tolCre;
+    pCourse->c.lecCredit = lecCre;
+    pCourse->c.labCredit = labCre;
+    pCourse->c.point = p;
+    pCourse->c.semester = sem;
 }

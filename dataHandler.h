@@ -14,8 +14,4 @@ void initDataFromCSV2CSV(const string& file);
 //Delete Course data from CSV with target id
 void deleteCourseFromCSV(const string& file, string targetId);
 
-// Course findCourse(const string& file, string targetId);
-
-void updateCourseData();
-
 #endif
