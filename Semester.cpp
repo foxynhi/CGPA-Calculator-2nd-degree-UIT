@@ -1,4 +1,5 @@
 #include "Semester.h"
+#include "cmath"
 
 Semester::Semester()
 {
@@ -14,4 +15,16 @@ Semester::~Semester()
         curr = next;
     }
     pHead = nullptr;
+}
+
+float Semester::calculateGPA()
+{
+    int count = 0;
+    float sum = 0;
+    
+    for (Node* p = pHead; p != nullptr; p = p->pNext){
+        sum += p->c.point;
+        count++;
+    }
+    return round(sum / count * 100) /100;
 }

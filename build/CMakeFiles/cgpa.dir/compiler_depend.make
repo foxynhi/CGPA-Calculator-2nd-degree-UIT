@@ -614,6 +614,7 @@ CMakeFiles/cgpa.dir/Semester.cpp.o: /home/nhi/Practice/CGPA-calculator/Semester.
   /usr/include/c++/13/cctype \
   /usr/include/c++/13/cerrno \
   /usr/include/c++/13/clocale \
+  /usr/include/c++/13/cmath \
   /usr/include/c++/13/cstdio \
   /usr/include/c++/13/cstdlib \
   /usr/include/c++/13/cwchar \
@@ -646,6 +647,7 @@ CMakeFiles/cgpa.dir/Semester.cpp.o: /home/nhi/Practice/CGPA-calculator/Semester.
   /usr/include/features.h \
   /usr/include/linux/errno.h \
   /usr/include/locale.h \
+  /usr/include/math.h \
   /usr/include/pthread.h \
   /usr/include/sched.h \
   /usr/include/stdc-predef.h \
@@ -663,9 +665,18 @@ CMakeFiles/cgpa.dir/Semester.cpp.o: /home/nhi/Practice/CGPA-calculator/Semester.
   /usr/include/x86_64-linux-gnu/bits/errno.h \
   /usr/include/x86_64-linux-gnu/bits/floatn-common.h \
   /usr/include/x86_64-linux-gnu/bits/floatn.h \
+  /usr/include/x86_64-linux-gnu/bits/flt-eval-method.h \
+  /usr/include/x86_64-linux-gnu/bits/fp-fast.h \
+  /usr/include/x86_64-linux-gnu/bits/fp-logb.h \
+  /usr/include/x86_64-linux-gnu/bits/iscanonical.h \
   /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
+  /usr/include/x86_64-linux-gnu/bits/libm-simd-decl-stubs.h \
   /usr/include/x86_64-linux-gnu/bits/locale.h \
   /usr/include/x86_64-linux-gnu/bits/long-double.h \
+  /usr/include/x86_64-linux-gnu/bits/math-vector.h \
+  /usr/include/x86_64-linux-gnu/bits/mathcalls-helper-functions.h \
+  /usr/include/x86_64-linux-gnu/bits/mathcalls-narrow.h \
+  /usr/include/x86_64-linux-gnu/bits/mathcalls.h \
   /usr/include/x86_64-linux-gnu/bits/pthread_stack_min-dynamic.h \
   /usr/include/x86_64-linux-gnu/bits/pthreadtypes-arch.h \
   /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h \
@@ -1110,6 +1121,7 @@ CMakeFiles/cgpa.dir/main.cpp.o: /home/nhi/Practice/CGPA-calculator/main.cpp \
   /home/nhi/Practice/CGPA-calculator/CourseList.h \
   /home/nhi/Practice/CGPA-calculator/Node.h \
   /home/nhi/Practice/CGPA-calculator/Semester.h \
+  /home/nhi/Practice/CGPA-calculator/Student.h \
   /home/nhi/Practice/CGPA-calculator/config.h \
   /home/nhi/Practice/CGPA-calculator/dataHandler.h \
   /usr/include/alloca.h \
@@ -1296,6 +1308,12 @@ CMakeFiles/cgpa.dir/main.cpp.o: /home/nhi/Practice/CGPA-calculator/main.cpp \
 
 /home/nhi/Practice/CGPA-calculator/Student.h:
 
+/usr/include/x86_64-linux-gnu/bits/iscanonical.h:
+
+/usr/include/x86_64-linux-gnu/bits/fp-logb.h:
+
+/usr/include/x86_64-linux-gnu/bits/fp-fast.h:
+
 /home/nhi/Practice/CGPA-calculator/Semester.cpp:
 
 /home/nhi/Practice/CGPA-calculator/Node.cpp:
@@ -1328,6 +1346,8 @@ CMakeFiles/cgpa.dir/main.cpp.o: /home/nhi/Practice/CGPA-calculator/main.cpp \
 
 /usr/include/x86_64-linux-gnu/c++/13/bits/gthr-default.h:
 
+/usr/include/c++/13/cmath:
+
 /usr/include/x86_64-linux-gnu/c++/13/bits/error_constants.h:
 
 /usr/include/x86_64-linux-gnu/c++/13/bits/ctype_inline.h:
@@ -1357,6 +1377,8 @@ CMakeFiles/cgpa.dir/main.cpp.o: /home/nhi/Practice/CGPA-calculator/main.cpp \
 /usr/include/x86_64-linux-gnu/bits/wctype-wchar.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/locale_t.h:
+
+/usr/include/x86_64-linux-gnu/bits/mathcalls-helper-functions.h:
 
 /usr/include/x86_64-linux-gnu/bits/types/error_t.h:
 
@@ -1401,6 +1423,8 @@ CMakeFiles/cgpa.dir/main.cpp.o: /home/nhi/Practice/CGPA-calculator/main.cpp \
 /usr/include/c++/13/bits/stl_function.h:
 
 /usr/include/c++/13/bits/utility.h:
+
+/usr/include/x86_64-linux-gnu/bits/mathcalls-narrow.h:
 
 /usr/include/c++/13/bits/std_abs.h:
 
@@ -1486,9 +1510,15 @@ CMakeFiles/cgpa.dir/main.cpp.o: /home/nhi/Practice/CGPA-calculator/main.cpp \
 
 /usr/include/asm-generic/errno-base.h:
 
+/usr/include/x86_64-linux-gnu/bits/math-vector.h:
+
 /usr/include/c++/13/bits/hash_bytes.h:
 
+/usr/include/x86_64-linux-gnu/bits/flt-eval-method.h:
+
 /usr/include/c++/13/bits/localefwd.h:
+
+/usr/include/math.h:
 
 /usr/include/c++/13/bits/exception_defines.h:
 
@@ -1542,6 +1572,8 @@ CMakeFiles/cgpa.dir/main.cpp.o: /home/nhi/Practice/CGPA-calculator/main.cpp \
 
 /usr/include/c++/13/bits/invoke.h:
 
+/usr/include/x86_64-linux-gnu/bits/mathcalls.h:
+
 /usr/include/c++/13/bits/locale_classes.h:
 
 /usr/include/ctype.h:
@@ -1585,6 +1617,8 @@ CMakeFiles/cgpa.dir/main.cpp.o: /home/nhi/Practice/CGPA-calculator/main.cpp \
 /usr/include/c++/13/iostream:
 
 /usr/include/c++/13/initializer_list:
+
+/usr/include/x86_64-linux-gnu/bits/libm-simd-decl-stubs.h:
 
 /usr/include/c++/13/istream:
 

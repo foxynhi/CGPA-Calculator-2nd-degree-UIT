@@ -17,9 +17,10 @@ struct Student
     
     Student()
         :id(0), name(""), n(0), cList() {};
-    Student(int i, string n, int nn, CL cl)
+    Student(int i, string n, int nn, const CL& cl)
         : id(i), name(n), n(nn), cList(cl) {}
-    ~Student(){};
+
+    friend ostream& operator<<(ostream& os, Student& s);
 };
 
 #endif

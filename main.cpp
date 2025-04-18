@@ -5,6 +5,7 @@
 #include "Course.h"
 #include "CourseList.h"
 #include "dataHandler.h"
+#include "Student.h"
 using namespace std;
 
 int main()
@@ -24,12 +25,23 @@ int main()
     // deleteCourseFromCSV("/home/nhi/Practice/CGPA-calculator/course-data/courses.csv", "2"); 
     // deleteCourseFromCSV("course-data/courses.csv", 3);
 
-    cl.initDataFromCSV("./course-data/courses.csv");
+    cl.initDataFromCSV("/home/nhi/Practice/CGPA-calculator/course-data/courses.csv");
     cout << cl << endl;
-    // cout << "Delete successfully: "<< cl.deleteCourse("IE101", 1) << endl << endl;
+
+    // cout << "Test: Delete Course (IT001) successfully: "<< cl.deleteCourse("IT001", 1) << endl << endl;
     // cout << cl << endl;
 
-    cl.updateCourse("IE101", "updated", 1,1,1,1,1);
-    cout << cl << endl;
+    // cout << "Test: Update course (IE101) successfully:" << cl.updateCourse("IE101", "updated", 1,1,1,10,1) << endl << endl;
+    // cout << cl << endl;
+
+    // cout << "Test: GPA for semester 1 = ";
+    // float gpa1 = cl.semester[0].calculateGPA();
+    // cout << gpa1 << endl;
+
+    int n1 = cl.getCount();
+    cout << "Test: Get number of Courses in CourseList: " << n1 << endl;
+    Student s1(123, "Nguyen Van A", n1, cl);
+    cout << s1 << endl;
+
     return 0;
 }

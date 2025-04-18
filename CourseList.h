@@ -14,6 +14,9 @@ struct CourseList
     Semester semester[N];
     
     CourseList();
+    CourseList(const CourseList& cl);
+    Node* deepCopySemester(Node* pHead);
+    
     void addCourse(Course c);
     friend ostream& operator<<(ostream& os, CourseList& cList);
 
@@ -27,10 +30,12 @@ struct CourseList
     bool deleteCourse(string targetId, int sem);
 
     //Update Cousre data
-    void updateCourse(string targetId, string targetName, int tolCre, int lecCre, int labCre, int p, int sem);
+    bool updateCourse(string targetId, string targetName, int tolCre, int lecCre, int labCre, int p, int sem);
 
     //Calculate CGPA of the whole CourseList
     float calculateCGPA();
+
+    int getCount();
 };
 typedef CourseList CL;
 

@@ -149,4 +149,5 @@ CMakeFiles/cgpa.dir/main.cpp.o: \
  /home/nhi/Practice/CGPA-calculator/Semester.h \
  /home/nhi/Practice/CGPA-calculator/Node.h \
  /home/nhi/Practice/CGPA-calculator/config.h \
- /home/nhi/Practice/CGPA-calculator/dataHandler.h
+ /home/nhi/Practice/CGPA-calculator/dataHandler.h \
+ /home/nhi/Practice/CGPA-calculator/Student.h

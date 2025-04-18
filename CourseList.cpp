@@ -7,9 +7,28 @@ CourseList::CourseList()
 {
     for (int i = 0; i < N; i++){
         Semester s;
-        semester[i+1] = s;
+        semester[i] = s;
     }
 }
+
+Node* CourseList::deepCopySemester(Node* pHead)
+{
+    if (!pHead) return nullptr;
+
+    Node* newHead = new Node;
+    newHead->c = pHead->c;
+    newHead->pNext = deepCopySemester(pHead->pNext);
+    return newHead;
+}
+
+//Create a deep copy of a CourseList
+CourseList::CourseList(const CourseList& cl)
+{
+    for (int i = 0; i < N; i++){
+        semester[i].pHead = deepCopySemester(cl.semester[i].pHead);
+    }
+}
+
 //add a course into CL
 void CourseList::addCourse(Course c)
 {   
@@ -33,7 +52,8 @@ ostream& operator<<(ostream& os, CourseList& cList)
         os << "Semester " << i+1 << ":\n\t";
         for (Node* p = cList.semester[i].pHead; p != nullptr; p = p->pNext)
         {
-            os << p->c << "\t";
+            if (p == nullptr) os << "[NULL]";
+            else os << p->c << "\t";
         }
         os << endl;
     }
@@ -105,10 +125,11 @@ bool CourseList::deleteCourse(string targetId, int sem)
     return false;
 }
 
-void CourseList::updateCourse(string targetId, string targetName, int tolCre, int lecCre, int labCre, int p, int sem)
+bool CourseList::updateCourse(string targetId, string targetName, int tolCre, int lecCre, int labCre, int p, int sem)
 {
     Node* pCourse = findNode(targetId, sem);
-    if (!pCourse) return;
+    if (!pCourse) return false;
+
     pCourse->c.id = targetId;
     pCourse->c.name = targetName;
     pCourse->c.tolCredit = tolCre;
@@ -116,4 +137,16 @@ void CourseList::updateCourse(string targetId, string targetName, int tolCre, in
     pCourse->c.labCredit = labCre;
     pCourse->c.point = p;
     pCourse->c.semester = sem;
+    return true;
+}
+
+int CourseList::getCount()
+{
+    int count = 0;
+    for (int i = 0; i < N; i++){
+        for (Node* p = semester[i].pHead; p != nullptr; p = p->pNext){
+            count++;
+        }
+    }
+    return count;
 }

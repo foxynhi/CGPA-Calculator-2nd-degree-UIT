@@ -11,10 +11,13 @@ struct Node
     Course c;
     Node* pNext;
 
+    Node()
+        : c(), pNext(nullptr) {};
     Node(const Course&);
     ~Node(){
         pNext = nullptr;
     };
+    Node* deepCopyList(Node* pHead);
 };
 
 #endif
