@@ -19,7 +19,6 @@ struct CourseList
 
     //Initialize Course objects from CSV
     void initDataFromCSV(const string& file);
-    Node* findNode(string targetId, int sem);
     bool deleteCourse(string targetId, int sem);
     void updateCourse(string targetId, string targetName, int tolCre, int lecCre, int labCre, int p, int sem);
 };

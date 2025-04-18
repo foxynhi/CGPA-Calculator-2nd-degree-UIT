@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.10)
-project(cpp-repo)
+project(CGPA_calculator)
 
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 11)
 
 # Add source files
 add_executable(cgpa
