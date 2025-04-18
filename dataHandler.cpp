@@ -10,11 +10,11 @@ using namespace std;
 
 void initDataManual2CSV()
 {
-    if (remove("/home/nhi/Practice/CGPA-calculator/course-data/courses.csv") == 0){
+    if (remove("./course-data/courses.csv") == 0){
         cout << "Replacing data..." << endl;
     } else cout << "Creating csv file..." << endl;
 
-    ofstream out("/home/nhi/Practice/CGPA-calculator/course-data/courses.csv");
+    ofstream out("./course-data/courses.csv");
     if(!out.is_open()){
         cerr << "Cannot open file." << endl;
         return;
@@ -40,11 +40,11 @@ void initDataManual2CSV()
 
 void initDataFromCSV2CSV(const string& file)
 {
-    if (remove("/home/nhi/Practice/CGPA-calculator/course-data/courses.csv") == 0){
+    if (remove("./course-data/courses.csv") == 0){
         cout << "Replacing data..." << endl;
     } else cout << "Creating csv file..." << endl;
 
-    ofstream out("/home/nhi/Practice/CGPA-calculator/course-data/courses.csv");
+    ofstream out("./course-data/courses.csv");
     if(!out.is_open()){
         perror("Cannot open output file.");
         return;
