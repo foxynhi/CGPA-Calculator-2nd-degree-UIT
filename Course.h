@@ -28,6 +28,7 @@ struct Course
     friend ostream& operator<<(ostream& os, Course& c);
     Course operator=(const Course& c);
     string toCSV() const;
+    
 };
 
 #endif

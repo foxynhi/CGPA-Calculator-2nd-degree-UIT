@@ -28,6 +28,9 @@ struct CourseList
 
     //Update Cousre data
     void updateCourse(string targetId, string targetName, int tolCre, int lecCre, int labCre, int p, int sem);
+
+    //Calculate CGPA of the whole CourseList
+    float calculateCGPA();
 };
 typedef CourseList CL;
 
