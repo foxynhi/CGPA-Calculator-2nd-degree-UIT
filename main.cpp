@@ -26,7 +26,7 @@ int main()
     // deleteCourseFromCSV("course-data/courses.csv", 3);
 
     cl.initDataFromCSV("/home/nhi/Practice/CGPA-calculator/course-data/courses.csv");
-    cout << cl << endl;
+    // cout << cl << endl;
 
     // cout << "Test: Delete Course (IT001) successfully: "<< cl.deleteCourse("IT001", 1) << endl << endl;
     // cout << cl << endl;
@@ -43,5 +43,24 @@ int main()
     Student s1(123, "Nguyen Van A", n1, cl);
     cout << s1 << endl;
 
+    // cout << "Find Node" << s1.cList.findNode("IE101", 0) << endl;
+    s1.setPoint("IE101", 0, 10.);
+    s1.setPoint("IT005", 0, 10.);
+    s1.setPoint("IT004", 0, 10.);
+    s1.setPoint("IE005", 0, 10.);
+    s1.setPoint("IT001", 0, 10.);
+
+    s1.setPoint("MA004", 1, 9.);
+    s1.setPoint("IT012", 1, 9.);
+    s1.setPoint("IT003", 1, 9.);
+    s1.setPoint("IT002", 1, 9.);
+
+    s1.setPoint("IE106", 2, 8.);
+    s1.setPoint("IE104", 2, 8.);
+    s1.setPoint("IE103", 2, 8.);
+    cout << s1 << endl;
+
+    cout << s1.calcCGPAbySemester() << endl;
+    cout << endl;
     return 0;
 }

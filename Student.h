@@ -19,8 +19,11 @@ struct Student
         :id(0), name(""), n(0), cList() {};
     Student(int i, string n, int nn, const CL& cl)
         : id(i), name(n), n(nn), cList(cl) {}
-
     friend ostream& operator<<(ostream& os, Student& s);
+
+    void setPoint(string targetId, int sem, float p);
+    float calcCGPAbySemester();
+    float calcCGPAbyCourse();
 };
 
 #endif

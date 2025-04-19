@@ -14,7 +14,7 @@ struct Semester
     ~Semester();
 
     //Calculate GPA of a semester
-    float calculateGPA();
+    float calcSemesterGPA();
 };
 
 #endif

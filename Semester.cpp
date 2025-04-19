@@ -17,7 +17,7 @@ Semester::~Semester()
     pHead = nullptr;
 }
 
-float Semester::calculateGPA()
+float Semester::calcSemesterGPA()
 {
     int count = 0;
     float sum = 0;
@@ -26,5 +26,5 @@ float Semester::calculateGPA()
         sum += p->c.point;
         count++;
     }
-    return round(sum / count * 100) /100;
+    return round(sum / count * 100) /100.;
 }

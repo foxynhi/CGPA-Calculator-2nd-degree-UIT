@@ -96,7 +96,7 @@ void CourseList::initDataFromCSV(const string& file)
 
 Node* CourseList::findNode(string targetId, int sem)
 {
-    for (Node* p = semester[sem-1].pHead; p != nullptr; p = p->pNext){
+    for (Node* p = semester[sem].pHead; p != nullptr; p = p->pNext){
         if (p->c.id == targetId){
             return p;
         }
@@ -107,11 +107,11 @@ Node* CourseList::findNode(string targetId, int sem)
 bool CourseList::deleteCourse(string targetId, int sem)
 {
     Node* pPrev = nullptr;
-    Node* p = semester[sem-1].pHead;
+    Node* p = semester[sem].pHead;
     while (p != nullptr){
         if (p->c.id == targetId){
             if (pPrev == nullptr){
-                semester[sem-1].pHead = p->pNext;
+                semester[sem].pHead = p->pNext;
             } else {
                 pPrev->pNext = p->pNext;
             }
