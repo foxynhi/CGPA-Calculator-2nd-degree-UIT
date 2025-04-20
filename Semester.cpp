@@ -24,8 +24,8 @@ float Semester::calcSemesterGPA()
     float sum = 0;
     
     for (Node* p = pHead; p != nullptr; p = p->pNext){
-        sum += p->c.point;
-        count++;
+        sum += p->c.point * p->c.tolCredit;
+        count += p->c.tolCredit;
     }
     return round(sum / count * 100) /100.;
 }

@@ -63,13 +63,16 @@ int main()
     // cout << "Calculate CGPA by Semester's GPA: " << s1.calcCGPAbySemester() << endl;
     // cout << "Calculate CGPA by Course: " << s1.calcCGPAbyCourse() << endl;
 
-    s1.addTakenCourse("IE101", 1, 10);
-    s1.addTakenCourse("IT005", 2, 10);
-    s1.addTakenCourse("IT004", 3, 10);
-    s1.addTakenCourse("MA004", 4, 10);
-    s1.addTakenCourse("IT001", 5, 10);
+    s1.addTakenCourse("IT005", 0, 9.5);
+    s1.addTakenCourse("IT004", 0, 8.8);
+    s1.addTakenCourse("IE005", 0, 8.3);
+    s1.addTakenCourse("IT001", 0, 8.6);
+    s1.addTakenCourse("IE101", 0, 7.3);
     cout << s1 << endl;
 
+    cout << s1.cList.semester[0].calcSemesterGPA() << endl;
+    cout << s1.calcCGPAbySemester() << endl;
+    cout << s1.calcCGPAbyCourse() << endl;
     cout << endl;
     return 0;
 }

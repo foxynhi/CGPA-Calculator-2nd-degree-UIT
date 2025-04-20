@@ -23,12 +23,20 @@ istream& operator>>(istream& is, Course& c)
     cout << "point: ";
     is >> c.point;
     cout << "semester (1-6): ";
-    is >> c.semester;
+    int s;
+    is >> s;
+    c.semester = s-1;
     return is;
 }
 ostream& operator<<(ostream& os, Course& c)
 {
-    os << "{" << c.id << "; " << c.name << "; " << c.tolCredit << "; " << c.lecCredit << "; " << c.labCredit << "; " << c.point << "; " << c.semester << "}" << endl;
+    os << "{" << c.id << "; " 
+        << c.name << "; " 
+        << c.tolCredit << "; " 
+        << c.lecCredit << "; " 
+        << c.labCredit << "; " 
+        << c.point << "; " 
+        << c.semester + 1 << "}" << endl;
     return os;
 }
 Course Course::operator=(const Course& c)

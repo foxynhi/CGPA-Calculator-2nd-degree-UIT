@@ -30,6 +30,9 @@ bool Student::addTakenCourse(string targetId, int sem, float p)
         if (id == targetId){
             Course c;
             string token;
+
+            c.id = id;
+
             getline(s,token, ',');
             c.name = token;
 
@@ -70,10 +73,11 @@ float Student::calcCGPAbySemester()
     int sem = 0;
     for (int i = 0; i < N; i++){
         if (cList.semester[i].pHead == nullptr) 
-            break;
+            continue;
         sum += cList.semester[i].calcSemesterGPA();
         sem++;
     }
+    cout << "Calculate GPA by Semester:\nSemester counted: " << sem << endl;
     return round(sum / sem * 100) / 100.;
 }
 
@@ -83,13 +87,14 @@ float Student::calcCGPAbyCourse()
     int count = 0;
     for (int i = 0; i < N; i++){
         if (cList.semester[i].pHead == nullptr) 
-            break;
+            continue;
 
         for (Node* p = cList.semester[i].pHead; p != nullptr; p = p->pNext){
-            sum += p->c.point;
-            count++;
+            sum += p->c.point * p->c.tolCredit;
+            count += p->c.tolCredit;
         }
     }
+    cout << "Calculate GPA by Course:\nCredits counted: " << count << endl;
     return round(sum / count * 100) / 100.;
 
 }

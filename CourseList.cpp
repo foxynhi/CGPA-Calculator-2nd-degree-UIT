@@ -32,7 +32,7 @@ CourseList::CourseList(const CourseList& cl)
 //add a course into CL
 void CourseList::addCourse(Course c)
 {   
-    int s = c.semester-1;
+    int s = c.semester;
     Node* p = semester[s].pHead;
     Node* cNode = new Node(c);;
 
@@ -49,7 +49,7 @@ ostream& operator<<(ostream& os, CourseList& cList)
     cout << "\t{ID; NAME; TOTAL CREDIT; LECTURE CREDIT; LAB CREDIT; POINT; SEMESTER}" << endl;
     for (int i = 0; i < N; i++)
     {
-        os << "Semester " << i+1 << ":\n\t";
+        os << "Semester " << i + 1 << ":\n\t";
         for (Node* p = cList.semester[i].pHead; p != nullptr; p = p->pNext)
         {
             if (p == nullptr) os << "[NULL]";
