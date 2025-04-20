@@ -13,7 +13,7 @@ ostream& operator<<(ostream& os, Student& s)
 bool Student::addTakenCourse(string targetId, int sem, float p)
 {
     //Find Course data in CSV
-    ifstream in("../course-data/courses.csv");
+    ifstream in("./course-data/courses.csv");
     if (!in.is_open()){
         cerr << "Cannot open input file." << endl;
         in.close();
