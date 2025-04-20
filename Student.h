@@ -21,7 +21,9 @@ struct Student
         : id(i), name(n), n(nn), cList(cl) {}
     friend ostream& operator<<(ostream& os, Student& s);
 
-    void setPoint(string targetId, int sem, float p);
+    bool addTakenCourse(string targetId, int sem, float p);
+
+    bool setPoint(string targetId, int sem, float p);
     float calcCGPAbySemester();
     float calcCGPAbyCourse();
 };

@@ -6,6 +6,7 @@ Semester::Semester()
     pHead = nullptr;
 }
 
+//Semester linked list destructor
 Semester::~Semester()
 {
     Node* curr = pHead;

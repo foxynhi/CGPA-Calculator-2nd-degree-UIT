@@ -15,6 +15,8 @@ struct CourseList
     
     CourseList();
     CourseList(const CourseList& cl);
+
+    //Get deep copy of a Semester pHead Node
     Node* deepCopySemester(Node* pHead);
     
     void addCourse(Course c);
