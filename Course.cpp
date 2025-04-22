@@ -9,8 +9,13 @@ istream& operator>>(istream& is, Course& c)
 {
     cout << "\nEnter course data:\n";
     cout << "id: ";
+    string id;
     is.ignore(numeric_limits<streamsize>::max(), '\n');
-    getline(is, c.id);
+    getline(is, id);
+    for (char& x : id){
+        x = (char)toupper(x);
+    }
+    c.id = id;
     cout << "name: ";
     // is.ignore(numeric_limits<streamsize>::max(), '\n');
     getline(is, c.name);
@@ -60,4 +65,4 @@ string Course::toCSV() const {
     << point << "," 
     << semester;
     return s.str();
-};
+}

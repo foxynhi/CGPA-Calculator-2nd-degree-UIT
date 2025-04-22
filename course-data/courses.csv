@@ -1,18 +1,18 @@
 id,name,totalCredit,lectureCredit,labCredit,point,semester
-IT001,Nhập môn lập trình,4,3,1,0,1
-IE005,Giới thiệu ngành Công nghệ Thông tin,1,1,0,0,1
-IT004,Cơ sở dữ liệu,4,3,1,0,1
-IT005,Nhập môn mạng máy tính,4,3,1,0,1
-IE101,Cơ sở hạ tầng Công nghệ thông tin,3,2,1,0,1
-IT002,Lập trình hướng đối tượng,4,3,1,0,2
-IT003,Cấu trúc dữ liệu và giải thuật,4,3,1,0,2
-IT012,Tổ chức và cấu trúc máy tính II,4,3,1,0,2
-MA004,Cấu trúc rời rạc,4,4,0,0,2
-IE103,Quản lý thông tin,4,3,1,0,3
-IE104,Internet và công nghệ Web,4,3,1,0,3
-IE106,Thiết kế giao diện người dùng,4,3,1,0,3
-IE105,Nhập môn bảo đảm và an ninh thông tin,4,3,1,0,4
-IE400,Chuyên đề tốt nghiệp,4,4,0,0,4
-IE505,Khóa luận tốt nghiệp,10,10,0,0,5
-IE505,Đồ án tốt nghiệp,6,6,0,0,5
-IE502,Đồ án tốt nghiệp tại doanh nghiệp,10,10,0,0,5
+IT001,Nhap mon lap trinh,4,3,1,0,1
+IE005,Gioi thieu nganh Cong nghe Thong tin,1,1,0,0,1
+IT004,Co so du lieu,4,3,1,0,1
+IT005,Nhap mon mang may tinh,4,3,1,0,1
+IE101,Co so ha tang Cong nghe thong tin,3,2,1,0,1
+IT002,Lap trinh huong doi tuong,4,3,1,0,2
+IT003,Cau truc du lieu va giai thuat,4,3,1,0,2
+IT012,To chuc va cau truc may tinh II,4,3,1,0,2
+MA004,Cau truc roi rac,4,4,0,0,2
+IE103,Quan ly thong tin,4,3,1,0,3
+IE104,Internet va cong nghe Web,4,3,1,0,3
+IE106,Thiet ke giao dien nguoi dung,4,3,1,0,3
+IE105,Nhap mon bao dam va an ninh thong tin,4,3,1,0,4
+IE400,Chuyen de tot nghiep,4,4,0,0,4
+IE505,Khoa luan tot nghiep,10,10,0,0,5
+IE505,Do an tot nghiep,6,6,0,0,5
+IE502,Do an tot nghiep tai doanh nghiep,10,10,0,0,5

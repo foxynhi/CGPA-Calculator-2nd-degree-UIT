@@ -38,7 +38,7 @@ void initDataManual2CSV()
     out.close();
 }
 
-void initDataFromCSV2CSV(const string& file)
+void convertCSVFormat(const string& file)
 {
     if (remove("./course-data/courses.csv") == 0){
         cout << "Replacing data..." << endl;

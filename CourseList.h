@@ -25,16 +25,23 @@ struct CourseList
     //Initialize Course objects from CSV
     void initDataFromCSV(const string& file);
 
+    //Find Cousre Node with id
+    Node* findNode(string targetId);
+
     //Find Cousre Node with id and semester
     Node* findNode(string targetId, int sem);
+
+    //Delete Cousre with id
+    bool deleteCourse(string targetId);
 
     //Delete Cousre with id and semester
     bool deleteCourse(string targetId, int sem);
 
     //Update Cousre data
-    bool updateCourse(string targetId, string targetName, int tolCre, int lecCre, int labCre, int p, int sem);
+    bool updateCourse(Node*& node, string targetName, int tolCre, int lecCre, int labCre, int p, int sem);
 
     int getCount();
+    void changeSemester(Node* node, int sem);
 };
 typedef CourseList CL;
 

@@ -2,12 +2,25 @@
 #include "cmath"
 #include "fstream"
 #include "sstream"
+#include "limits"
 using namespace std;
 
 ostream& operator<<(ostream& os, Student& s)
 {
     os << "{" << s.id << "; " << s.name << "; " << s.n << " courses:\n" << s.cList << "}" << endl; 
     return os;
+}
+istream& operator>>(istream& is, Student& s)
+{
+    cout << "Enter student information:\n";
+    cout << "ID (123): ";
+    is >> s.id;
+    cout << "Name (Nguyen Van An): ";
+    is.ignore(numeric_limits<streamsize>::max(), '\n');
+    is >> s.name;
+    cout << "Number of courses taken: ";
+    is >> s.n;
+    return is;
 }
 
 bool Student::addTakenCourse(string targetId, int sem, float p)
@@ -60,10 +73,10 @@ bool Student::addTakenCourse(string targetId, int sem, float p)
 
 bool Student::setPoint(string targetId, int sem, float p)
 {
-    Node* pCourse = cList.findNode(targetId, sem);
-    if (!pCourse) 
+    Node* node = cList.findNode(targetId, sem);
+    if (!node) 
         return false;
-    cList.updateCourse(targetId, pCourse->c.name, pCourse->c.tolCredit, pCourse->c.lecCredit, pCourse->c.labCredit, p, sem);
+    cList.updateCourse(node, node->c.name, node->c.tolCredit, node->c.lecCredit, node->c.labCredit, p, sem);
     return true;
 }
 

@@ -87,11 +87,23 @@ void CourseList::initDataFromCSV(const string& file)
         c.point = stoi(token);
 
         getline(s, token, ',');
-        c.semester = stoi(token);
+        c.semester = stoi(token)-1;
 
         addCourse(c);
     }
     in.close();
+}
+
+Node* CourseList::findNode(string targetId)
+{
+    for (int i = 0; i < N; i++){
+        for (Node* p = semester[i].pHead; p != nullptr; p = p->pNext){
+            if (p->c.id == targetId){
+                return p;
+            }
+        }
+    }
+    return nullptr;
 }
 
 Node* CourseList::findNode(string targetId, int sem)
@@ -106,10 +118,14 @@ Node* CourseList::findNode(string targetId, int sem)
 
 bool CourseList::deleteCourse(string targetId, int sem)
 {
+    Node* node = findNode(targetId, sem);
+    if (!node) 
+        return false;
+
     Node* pPrev = nullptr;
     Node* p = semester[sem].pHead;
     while (p != nullptr){
-        if (p->c.id == targetId){
+        if (p == node){
             if (pPrev == nullptr){
                 semester[sem].pHead = p->pNext;
             } else {
@@ -124,19 +140,39 @@ bool CourseList::deleteCourse(string targetId, int sem)
     }
     return false;
 }
-
-bool CourseList::updateCourse(string targetId, string targetName, int tolCre, int lecCre, int labCre, int p, int sem)
+bool CourseList::deleteCourse(string targetId)
 {
-    Node* pCourse = findNode(targetId, sem);
-    if (!pCourse) return false;
+    Node* node = findNode(targetId);
+    if (!node) 
+        return false;
 
-    pCourse->c.id = targetId;
-    pCourse->c.name = targetName;
-    pCourse->c.tolCredit = tolCre;
-    pCourse->c.lecCredit = lecCre;
-    pCourse->c.labCredit = labCre;
-    pCourse->c.point = p;
-    pCourse->c.semester = sem;
+    Node* pPrev = nullptr;
+    Node* p = semester[node->c.semester].pHead;
+    while (p != nullptr){
+        if (p == node){
+            if (pPrev == nullptr){
+                semester[node->c.semester].pHead = p->pNext;
+            } else {
+                pPrev->pNext = p->pNext;
+            }
+            p->pNext = nullptr;
+            delete p;
+            return true;
+        }
+        pPrev = p;
+        p = p->pNext;
+    }
+    return false;
+}
+
+bool CourseList::updateCourse(Node*& node, string targetName, int tolCre, int lecCre, int labCre, int p, int sem)
+{
+    node->c.name = targetName;
+    node->c.tolCredit = tolCre;
+    node->c.lecCredit = lecCre;
+    node->c.labCredit = labCre;
+    node->c.point = p;
+    node->c.semester = sem;
     return true;
 }
 
@@ -149,4 +185,12 @@ int CourseList::getCount()
         }
     }
     return count;
+}
+
+void CourseList::changeSemester(Node* node, int sem)
+{
+    Course course(node->c);
+    course.semester = sem;
+    addCourse(course);
+    deleteCourse(node->c.id, node->c.semester);
 }
