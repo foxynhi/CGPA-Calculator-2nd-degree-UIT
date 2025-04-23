@@ -22,10 +22,18 @@ struct Student
     friend istream& operator>>(istream& is, Student& s);
     friend ostream& operator<<(ostream& os, Student& s);
 
-    bool addTakenCourse(string targetId, int sem, float p);
+    //add a course taken by a student from model CourseList
+    bool addCourse(CL cl, string targetId, int sem);
 
     bool setPoint(string targetId, int sem, float p);
+    
+    //Calcualate GPA of a semester
+    float calcSemesterGPA(int sem);
+
+    //Calcualate CGPA of a Student devided by semester
     float calcCGPAbySemester();
+
+    //Calcualate CGPA of a Student devided by course
     float calcCGPAbyCourse();
 };
 

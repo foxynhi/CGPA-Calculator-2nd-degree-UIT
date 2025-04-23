@@ -24,7 +24,7 @@ int main()
     cin >> s;
     cout << endl;
 
-    cout << "Option menu:\n1. Show model curriculum\n2. Show student information\n3. Add course manually\n4. Add course from curriculum\n5. Delete course\n6. Update course\n7. Add point for course\n8. Calculate GPA of a semester\n9. Calculate CGPA by course\n10. Calculate CGPA by semester\n11. See menu\n12. Exit" << endl;
+    cout << "Option menu:\n1. Show model curriculum\n2. Show student information\n3. Add course manually\n4. Add course from curriculum\n5. Delete course\n6. Update course\n7. Set point for a course\n8. Calculate GPA of a semester\n9. Calculate CGPA by course\n10. Calculate CGPA by semester\n11. See menu\n12. Exit" << endl;
     cout << "--------------------------------------------------------------" << endl;
 
     CL cl;
@@ -33,7 +33,7 @@ int main()
     int option = 0;
     while (true) {
         while (true) {
-            cout << "\nEnter option (1-12): ";
+            cout << "\nEnter option (1-12) (11 to see menu): ";
             cin >> option;
             if (option >= 1 && option <= 12) break;
             cout << "Invalid option. Please try again." << endl;
@@ -42,23 +42,29 @@ int main()
         switch (option)
         {                       
             case 1:
+                //Show model curriculum by semester
                 cout << cl << endl;
                 break;
             case 2:
+                //Show a student's information
                 cout << s << endl;
                 break;
-            case 3: {
+            case 3:
+            {
+                //Add course from user
                 Course course;
                 cin >> course;
                 s.cList.addCourse(course);
+                s.n = s.cList.getCount();
                 cout << "Course added successfully!" << endl << endl;
                 break;
             }
-            case 4:{
+            case 4:
+            {
                 //Add course from curriculum
                 string id;
                 int sem;
-                cout << "Enter course id (IT001): ";
+                cout << "Enter course ID to add (IT001): ";
                 cin >> id;
                 strUpper(id);
                 Node* node = cl.findNode(id);
@@ -66,28 +72,47 @@ int main()
                     cout << "Error: Course ID \"" << id << "\" not found!" << endl;
                     break;
                 }
-                cout << "Enter semester taken that course (1-6): ";
-                cin >> sem;
+
+                while (true){
+                    cout << "Enter semester taken that course (1-6): ";
+                    cin >> sem;
+                    if (sem >= 1 && sem <= 6)
+                        break;
+                }                
                 sem--;
-                Course course = node->c;
-                course.semester = sem;
-                s.cList.addCourse(course);
-                cout << "Course added successfully!" << endl; 
+
+                if (s.addCourse(cl,id,sem))
+                    cout << "Course added successfully!" << endl;
+                else
+                    cout << "Error adding course..." << endl;
                 break;
             }
-            case 5:{
+            case 5:
+            {
+                //Delete a course from student's course list
                 string id;
+                int sem;
                 cout << "Enter course ID to delete: ";
                 cin >> id;
                 strUpper(id);
-                if (s.cList.deleteCourse(id))
+                while (true){
+                    cout << "Enter semester taken that course (1-6): ";
+                    cin >> sem;
+                    if (sem >= 1 && sem <= 6)
+                        break;
+                }
+                sem--;
+                if (s.cList.deleteCourse(id, sem)){
                     cout << "Course deleted successfully!" << endl;
+                    s.n = s.cList.getCount();
+                }
                 else
                     cout << "Error deleting course..." << endl;
                 break;
             }
-            case 6:{
-                //Update cousre
+            case 6:
+            {
+                //Update a cousre
                 string id;
                 cout << "Enter course ID to update: ";
                 cin >> id;
@@ -134,85 +159,75 @@ int main()
                 break;
             }
             case 7:
-                cout << "Add point for course" << endl;
+            {
+                //Set point for a course
+                string id;
+                int sem;
+                float poi;
+                cout << "Enter course ID to set point (IT001): ";
+                cin >> id;
+                strUpper(id);
+                while (true){
+                    cout << "Enter semester taken that course (1-6): ";
+                    cin >> sem;
+                    if (sem >= 1 && sem <= 6)
+                        break;
+                }
+                sem--;
+                if (!s.cList.findNode(id,sem)){
+                    cout << "Error: Course ID \"" << id << "\" not found!" << endl;
+                    break;
+                }
+                cout << "Enter point (0-10): ";
+                cin >> poi;
+                if (poi < 0 || poi > 10){
+                    cout << "Error: Point must be in scale of 10." << endl;
+                    break;
+                }
+                if (s.setPoint(id,sem,poi)){
+                    cout << "Set point for course \"" << id << "\" successfully!" << endl;
+                } else
+                    cout << "Error setting point..." << endl;
                 break;
+            }
             case 8:
-                cout << "Calculate GPA of a semester" << endl;
+            {   
+                //Calcualate GPA of a semester
+                int sem;
+                while (true){
+                    cout << "Enter semester to calculate GPA: ";
+                    cin >> sem;
+                    if (sem >= 1 && sem <= 6)
+                        break;
+                }
+                sem--;
+                float semGPA = s.calcSemesterGPA(sem);
+                cout << "GPA of semester " << sem+1 << " = " << semGPA << endl;
                 break;
+            }
             case 9:
-                cout << "Calculate CGPA by course" << endl;
+            {
+                //Calcualate CGPA of a Student devided by course
+                float CGPA = s.calcCGPAbyCourse();
+                cout << "CGPA of student \"" << s.id << "\" = " << CGPA << endl;
                 break;
+            }
             case 10:
-                cout << "Calculate CGPA by semester" << endl;
+            {
+                //Calcualate CGPA of a Student devided by semester
+                float CGPA = s.calcCGPAbySemester();
+                cout << "CGPA of student \"" << s.id << "\" = " << CGPA << endl;
                 break;
+            }
             case 11:
-                cout << "Exit" << endl;
-                break;
+                cout << "Option menu:\n1. Show model curriculum\n2. Show student information\n3. Add course manually\n4. Add course from curriculum\n5. Delete course\n6. Update course\n7. Set point for a course\n8. Calculate GPA of a semester\n9. Calculate CGPA by course\n10. Calculate CGPA by semester\n11. See menu\n12. Exit" << endl;
+                cout << "--------------------------------------------------------------" << endl;
+                continue;
             case 12:
                 exit(0);
                 break;
         }
     }
 
-    // Course c1("it", "a", 2, 1, 1, 10, 1);
-    // cout << c1 << endl;
-    // cl.addCourse(c1);
-    // cout << cl;
-
-    // Course c2;
-    // cin >> c2;
-    // cout << c2;
-    // deleteCourseFromCSV("/home/nhi/Practice/CGPA-calculator/course-data/courses.csv", "1"); 
-    // deleteCourseFromCSV("/home/nhi/Practice/CGPA-calculator/course-data/courses.csv", "2"); 
-    // deleteCourseFromCSV("course-data/courses.csv", 3);
-
-    // cout << cl << endl;
-
-    // cout << "Test: Delete Course (IT001) successfully: "<< cl.deleteCourse("IT001", 1) << endl << endl;
-    // cout << cl << endl;
-
-    // cout << "Test: Update course (IE101) successfully:" << cl.updateCourse("IE101", "updated", 1,1,1,10,1) << endl << endl;
-    // cout << cl << endl;
-
-    // cout << "Test: GPA for semester 1 = ";
-    // float gpa1 = cl.semester[0].calculateGPA();
-    // cout << gpa1 << endl;
-
-    // int n1 = cl.getCount();
-    // cout << "Test: Get number of Courses in CourseList: " << n1 << endl;
-    // Student s1(123, "Nguyen Van A", 0, cl);
-    // // cout << s1 << endl;
-
-    // // cout << "Find Node" << s1.cList.findNode("IE101", 0) << endl;
-    // // s1.setPoint("IE101", 0, 10.);
-    // // s1.setPoint("IT005", 0, 10.);
-    // // s1.setPoint("IT004", 0, 10.);
-    // // s1.setPoint("IE005", 0, 10.);
-    // // s1.setPoint("IT001", 0, 10.);
-
-    // // s1.setPoint("MA004", 1, 9.);
-    // // s1.setPoint("IT012", 1, 9.);
-    // // s1.setPoint("IT003", 1, 9.);
-    // // s1.setPoint("IT002", 1, 9.);
-
-    // // s1.setPoint("IE106", 2, 8.);
-    // // s1.setPoint("IE104", 2, 8.);
-    // // s1.setPoint("IE103", 2, 8.);
-    // // cout << s1 << endl;
-
-    // // cout << "Calculate CGPA by Semester's GPA: " << s1.calcCGPAbySemester() << endl;
-    // // cout << "Calculate CGPA by Course: " << s1.calcCGPAbyCourse() << endl;
-
-    // s1.addTakenCourse("IT005", 0, 9.5);
-    // s1.addTakenCourse("IT004", 0, 8.8);
-    // s1.addTakenCourse("IE005", 0, 8.3);
-    // s1.addTakenCourse("IT001", 0, 8.6);
-    // s1.addTakenCourse("IE101", 0, 7.3);
-    // cout << s1 << endl;
-
-    // cout << s1.cList.semester[0].calcSemesterGPA() << endl;
-    // cout << s1.calcCGPAbySemester() << endl;
-    // cout << s1.calcCGPAbyCourse() << endl;
-    // cout << endl;
     return 0;
 }

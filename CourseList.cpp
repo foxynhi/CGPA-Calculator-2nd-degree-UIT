@@ -21,7 +21,6 @@ Node* CourseList::deepCopySemester(Node* pHead)
     return newHead;
 }
 
-//Create a deep copy of a CourseList
 CourseList::CourseList(const CourseList& cl)
 {
     for (int i = 0; i < N; i++){
@@ -29,7 +28,6 @@ CourseList::CourseList(const CourseList& cl)
     }
 }
 
-//add a course into CL
 void CourseList::addCourse(Course c)
 {   
     int s = c.semester;
@@ -49,13 +47,14 @@ ostream& operator<<(ostream& os, CourseList& cList)
     cout << "\t{ID; NAME; TOTAL CREDIT; LECTURE CREDIT; LAB CREDIT; POINT; SEMESTER}" << endl;
     for (int i = 0; i < N; i++)
     {
-        os << "Semester " << i + 1 << ":\n\t";
+        os << "Semester " << i + 1 << ":\n";
         for (Node* p = cList.semester[i].pHead; p != nullptr; p = p->pNext)
         {
-            if (p == nullptr) os << "[NULL]";
-            else os << p->c << "\t";
+            os << "\t";
+            if (p == nullptr) 
+                os << "[NULL]";
+            else os << p->c;
         }
-        os << endl;
     }
     return os;
 }

@@ -7,7 +7,7 @@ using namespace std;
 
 ostream& operator<<(ostream& os, Student& s)
 {
-    os << "{" << s.id << "; " << s.name << "; " << s.n << " courses:\n" << s.cList << "}" << endl; 
+    os << s.id << "; " << s.name << "; " << s.n << " courses:\n" << s.cList; 
     return os;
 }
 istream& operator>>(istream& is, Student& s)
@@ -18,57 +18,20 @@ istream& operator>>(istream& is, Student& s)
     cout << "Name (Nguyen Van An): ";
     is.ignore(numeric_limits<streamsize>::max(), '\n');
     is >> s.name;
-    cout << "Number of courses taken: ";
-    is >> s.n;
     return is;
 }
 
-bool Student::addTakenCourse(string targetId, int sem, float p)
+bool Student::addCourse(CL cl, string targetId, int sem)
 {
-    //Find Course data in CSV
-    ifstream in("./course-data/courses.csv");
-    if (!in.is_open()){
-        cerr << "Cannot open input file." << endl;
-        in.close();
+    Node* node = cl.findNode(targetId);
+    if (!node) 
         return false;
-    }
-
-    string line;
-    getline(in, line);
-
-    while (getline(in, line)){
-        stringstream s(line);
-        string id;
-        getline(s, id, ',');
-        if (id == targetId){
-            Course c;
-            string token;
-
-            c.id = id;
-
-            getline(s,token, ',');
-            c.name = token;
-
-            getline(s,token, ',');
-            c.tolCredit = stoi(token);
-            
-            getline(s,token, ',');
-            c.lecCredit = stoi(token);
-
-            getline(s,token, ',');
-            c.labCredit = stoi(token);
-
-            c.point = p;
-
-            c.semester = sem;
-
-            cList.addCourse(c);
-
-            n = cList.getCount();
-            return true;
-        }
-    }
-    return false;
+        
+    Course course(node->c);
+    course.semester = sem;
+    cList.addCourse(course);
+    n = cList.getCount();
+    return true;
 }
 
 bool Student::setPoint(string targetId, int sem, float p)
@@ -80,6 +43,18 @@ bool Student::setPoint(string targetId, int sem, float p)
     return true;
 }
 
+float Student::calcSemesterGPA(int sem)
+{
+    int count = 0;
+    float sum = 0;
+    
+    for (Node* p = cList.semester[sem].pHead; p != nullptr; p = p->pNext){
+        sum += p->c.point * p->c.tolCredit;
+        count += p->c.tolCredit;
+    }
+    return round(sum / count * 100) /100.;
+}
+
 float Student::calcCGPAbySemester()
 {
     float sum = 0;
@@ -87,7 +62,7 @@ float Student::calcCGPAbySemester()
     for (int i = 0; i < N; i++){
         if (cList.semester[i].pHead == nullptr) 
             continue;
-        sum += cList.semester[i].calcSemesterGPA();
+        sum += calcSemesterGPA(i);
         sem++;
     }
     cout << "Calculate GPA by Semester:\nSemester counted: " << sem << endl;
