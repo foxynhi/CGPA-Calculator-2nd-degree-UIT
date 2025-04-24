@@ -53,7 +53,8 @@ int main()
             {
                 //Add course from user
                 Course course;
-                cin >> course;
+                cin >> course;      //Ensured to be valid
+                cout << course << endl;
                 s.cList.addCourse(course);
                 s.n = s.cList.getCount();
                 cout << "Course added successfully!" << endl << endl;
@@ -63,7 +64,7 @@ int main()
             {
                 //Add course from curriculum
                 string id;
-                int sem;
+                int sem;                                                            //Need to validate
                 cout << "Enter course ID to add (IT001): ";
                 cin >> id;
                 strUpper(id);

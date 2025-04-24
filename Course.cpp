@@ -3,12 +3,13 @@
 #include "string"
 #include "sstream"
 #include "limits"
+#include "config.h"
 using namespace std;
 
 istream& operator>>(istream& is, Course& c)
 {
     cout << "\nEnter course data:\n";
-    cout << "id: ";
+    cout << "ID: ";
     string id;
     is.ignore(numeric_limits<streamsize>::max(), '\n');
     getline(is, id);
@@ -16,21 +17,65 @@ istream& operator>>(istream& is, Course& c)
         x = (char)toupper(x);
     }
     c.id = id;
-    cout << "name: ";
-    // is.ignore(numeric_limits<streamsize>::max(), '\n');
+
+    cout << "Name: ";
     getline(is, c.name);
-    cout << "total credits: ";
-    is >> c.tolCredit;
-    cout << "lecture credits: ";
-    is >> c.lecCredit;
-    cout << "lab credits: ";
-    is >> c.labCredit;
-    cout << "point: ";
-    is >> c.point;
-    cout << "semester (1-6): ";
+    while (true){
+        cout << "Total credits (0-8): ";
+        is >> c.tolCredit;
+        if (is.fail()){
+            is.clear();
+            is.ignore(numeric_limits<streamsize>::max(), '\n');
+            cout << "Invalid input." << endl;
+            continue;
+        }
+        if (c.tolCredit >= 0 && c.tolCredit <= 8)
+            break;
+    }
+
+    while (true){
+        cout << "Lecture credits (0-8): ";
+        is >> c.lecCredit;
+        if (is.fail()){
+            is.clear();
+            is.ignore(numeric_limits<streamsize>::max(), '\n');
+            cout << "Invalid input." << endl;
+            continue;
+        }
+        if (c.lecCredit >= 0 && c.lecCredit <= c.tolCredit)
+            break;
+    }
+
+    c.labCredit = c.tolCredit - c.lecCredit;
+    
+    while (true){
+        cout << "Point (0.0-10.0): ";
+        is >> c.point;
+        if (is.fail()){
+            is.clear();
+            is.ignore(numeric_limits<streamsize>::max(), '\n');
+            cout << "Invalid input." << endl;
+            continue;
+        }
+        if (c.point >= 0 && c.point <= 10)
+            break;
+    }
+
     int s;
-    is >> s;
-    c.semester = s-1;
+    while (true){
+        cout << "Semester (1-" << N << "): ";
+        is >> s;
+        if (is.fail()){
+            is.clear();
+            is.ignore(numeric_limits<streamsize>::max(), '\n');
+            cout << "Invalid input." << endl;
+            continue;
+        }
+        if (s >= 1 && s <= N){
+            c.semester = s-1;
+            break;
+        }
+    }
     return is;
 }
 ostream& operator<<(ostream& os, Course& c)

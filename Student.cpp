@@ -14,10 +14,11 @@ istream& operator>>(istream& is, Student& s)
 {
     cout << "Enter student information:\n";
     cout << "ID (123): ";
+    is.ignore(numeric_limits<streamsize>::max(), '\n');
     is >> s.id;
     cout << "Name (Nguyen Van An): ";
     is.ignore(numeric_limits<streamsize>::max(), '\n');
-    is >> s.name;
+    getline(is, s.name);
     return is;
 }
 

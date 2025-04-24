@@ -3,6 +3,7 @@
 
 CMakeFiles/cgpa.dir/Course.cpp.o: /home/nhi/Practice/CGPA-calculator/Course.cpp \
   /home/nhi/Practice/CGPA-calculator/Course.h \
+  /home/nhi/Practice/CGPA-calculator/config.h \
   /usr/include/alloca.h \
   /usr/include/asm-generic/errno-base.h \
   /usr/include/asm-generic/errno.h \
@@ -1421,6 +1422,8 @@ CMakeFiles/cgpa.dir/main.cpp.o: /home/nhi/Practice/CGPA-calculator/main.cpp \
 
 /usr/include/x86_64-linux-gnu/bits/timesize.h:
 
+/usr/include/x86_64-linux-gnu/bits/time.h:
+
 /usr/include/c++/13/bits/move.h:
 
 /usr/include/c++/13/bits/stl_construct.h:
@@ -1453,6 +1456,14 @@ CMakeFiles/cgpa.dir/main.cpp.o: /home/nhi/Practice/CGPA-calculator/main.cpp \
 
 /usr/include/x86_64-linux-gnu/bits/cpu-set.h:
 
+/home/nhi/Practice/CGPA-calculator/main.cpp:
+
+/usr/include/c++/13/bits/locale_classes.tcc:
+
+/usr/include/c++/13/bits/allocator.h:
+
+/usr/include/c++/13/sstream:
+
 /usr/include/x86_64-linux-gnu/c++/13/bits/os_defines.h:
 
 /usr/include/x86_64-linux-gnu/c++/13/bits/c++locale.h:
@@ -1481,10 +1492,6 @@ CMakeFiles/cgpa.dir/main.cpp.o: /home/nhi/Practice/CGPA-calculator/main.cpp \
 
 /usr/include/x86_64-linux-gnu/bits/struct_rwlock.h:
 
-/usr/include/x86_64-linux-gnu/bits/types/clock_t.h:
-
-/usr/include/c++/13/bits/char_traits.h:
-
 /usr/include/c++/13/bits/ostream.tcc:
 
 /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h:
@@ -1496,14 +1503,6 @@ CMakeFiles/cgpa.dir/main.cpp.o: /home/nhi/Practice/CGPA-calculator/main.cpp \
 /usr/include/c++/13/bits/requires_hosted.h:
 
 /usr/include/features.h:
-
-/usr/include/c++/13/bits/allocator.h:
-
-/home/nhi/Practice/CGPA-calculator/main.cpp:
-
-/usr/include/c++/13/bits/locale_classes.tcc:
-
-/usr/include/c++/13/sstream:
 
 /usr/include/c++/13/backward/binders.h:
 
@@ -1533,6 +1532,10 @@ CMakeFiles/cgpa.dir/main.cpp.o: /home/nhi/Practice/CGPA-calculator/main.cpp \
 
 /usr/include/c++/13/bits/hash_bytes.h:
 
+/usr/include/x86_64-linux-gnu/bits/types/clock_t.h:
+
+/usr/include/c++/13/bits/char_traits.h:
+
 /usr/include/x86_64-linux-gnu/bits/flt-eval-method.h:
 
 /usr/include/c++/13/bits/localefwd.h:
@@ -1552,12 +1555,6 @@ CMakeFiles/cgpa.dir/main.cpp.o: /home/nhi/Practice/CGPA-calculator/main.cpp \
 /usr/include/c++/13/type_traits:
 
 /usr/include/c++/13/bits/cxxabi_forced.h:
-
-/usr/include/x86_64-linux-gnu/bits/types/mbstate_t.h:
-
-/usr/include/c++/13/cerrno:
-
-/usr/include/stdio.h:
 
 /usr/include/c++/13/string:
 
@@ -1596,6 +1593,12 @@ CMakeFiles/cgpa.dir/main.cpp.o: /home/nhi/Practice/CGPA-calculator/main.cpp \
 /usr/include/c++/13/bits/locale_classes.h:
 
 /usr/include/ctype.h:
+
+/usr/include/x86_64-linux-gnu/bits/types/mbstate_t.h:
+
+/usr/include/c++/13/cerrno:
+
+/usr/include/stdio.h:
 
 /usr/include/c++/13/clocale:
 
@@ -1736,5 +1739,3 @@ CMakeFiles/cgpa.dir/main.cpp.o: /home/nhi/Practice/CGPA-calculator/main.cpp \
 /usr/include/c++/13/system_error:
 
 /usr/include/x86_64-linux-gnu/bits/thread-shared-types.h:
-
-/usr/include/x86_64-linux-gnu/bits/time.h:
