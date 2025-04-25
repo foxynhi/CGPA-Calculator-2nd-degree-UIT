@@ -4,89 +4,34 @@
 #include "sstream"
 #include "limits"
 #include "config.h"
+#include "dataHandler.h"
+#include "iomanip"
 using namespace std;
 
 istream& operator>>(istream& is, Course& c)
 {
-    cout << "\nEnter course data:\n";
-    cout << "ID: ";
-    string id;
-    is.ignore(numeric_limits<streamsize>::max(), '\n');
-    getline(is, id);
-    for (char& x : id){
-        x = (char)toupper(x);
-    }
-    c.id = id;
+    c.id = validateIDInput();
 
-    cout << "Name: ";
+    cout << "Course name: ";
     getline(is, c.name);
-    while (true){
-        cout << "Total credits (0-8): ";
-        is >> c.tolCredit;
-        if (is.fail()){
-            is.clear();
-            is.ignore(numeric_limits<streamsize>::max(), '\n');
-            cout << "Invalid input." << endl;
-            continue;
-        }
-        if (c.tolCredit >= 0 && c.tolCredit <= 8)
-            break;
-    }
 
-    while (true){
-        cout << "Lecture credits (0-8): ";
-        is >> c.lecCredit;
-        if (is.fail()){
-            is.clear();
-            is.ignore(numeric_limits<streamsize>::max(), '\n');
-            cout << "Invalid input." << endl;
-            continue;
-        }
-        if (c.lecCredit >= 0 && c.lecCredit <= c.tolCredit)
-            break;
-    }
+    c.tolCredit = validateTolCreditInput();
+    c.labCredit = validateLecCreditInput(c.tolCredit);
+    c.lecCredit = c.tolCredit - c.labCredit;
+    c.point = validatePointInput();
 
-    c.labCredit = c.tolCredit - c.lecCredit;
-    
-    while (true){
-        cout << "Point (0.0-10.0): ";
-        is >> c.point;
-        if (is.fail()){
-            is.clear();
-            is.ignore(numeric_limits<streamsize>::max(), '\n');
-            cout << "Invalid input." << endl;
-            continue;
-        }
-        if (c.point >= 0 && c.point <= 10)
-            break;
-    }
-
-    int s;
-    while (true){
-        cout << "Semester (1-" << N << "): ";
-        is >> s;
-        if (is.fail()){
-            is.clear();
-            is.ignore(numeric_limits<streamsize>::max(), '\n');
-            cout << "Invalid input." << endl;
-            continue;
-        }
-        if (s >= 1 && s <= N){
-            c.semester = s-1;
-            break;
-        }
-    }
+    c.semester = validateSemesterInput();
     return is;
 }
 ostream& operator<<(ostream& os, Course& c)
 {
-    os << "{" << c.id << "; " 
-        << c.name << "; " 
-        << c.tolCredit << "; " 
-        << c.lecCredit << "; " 
-        << c.labCredit << "; " 
-        << c.point << "; " 
-        << c.semester + 1 << "}" << endl;
+    os << "| " << c.id << " | "
+        << setw(38) << left << c.name << " | "
+        << setw(10) << left << c.tolCredit << " | "
+        << setw(12) << left << c.lecCredit << " | "
+        << setw(8) << left << c.labCredit << " | "
+        << setw(5) << left << c.point << " | "
+        << setw(8) << left << c.semester << " | " << endl;
     return os;
 }
 Course Course::operator=(const Course& c)

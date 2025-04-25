@@ -27,7 +27,7 @@ struct Student
 
     bool setPoint(string targetId, int sem, float p);
     
-    //Calcualate GPA of a semester
+    //Calcualate GPA for a semester
     float calcSemesterGPA(int sem);
 
     //Calcualate CGPA of a Student devided by semester

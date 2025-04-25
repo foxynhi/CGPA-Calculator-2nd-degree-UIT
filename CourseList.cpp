@@ -1,7 +1,7 @@
 #include "CourseList.h"
 #include "fstream"
 #include "sstream"
-
+#include "iomanip"
 
 CourseList::CourseList()
 {
@@ -44,16 +44,21 @@ void CourseList::addCourse(Course c)
 
 ostream& operator<<(ostream& os, CourseList& cList)
 {
-    cout << "\t{ID; NAME; TOTAL CREDIT; LECTURE CREDIT; LAB CREDIT; POINT; SEMESTER}" << endl;
+    os << "| " << setw(5) << left << "ID" << " | "
+        << setw(38) << left << "Course Name" << " | "
+        << setw(10) << left << "Total cre." << " | "
+        << setw(12) << left << "Lecture cre." << " | "
+        << setw(8) << left << "Lab cre." << " | "
+        << setw(5) << left << "Point" << " | "
+        << setw(8) << left << "Semester" << " | " << endl;
     for (int i = 0; i < N; i++)
     {
-        os << "Semester " << i + 1 << ":\n";
-        for (Node* p = cList.semester[i].pHead; p != nullptr; p = p->pNext)
+        Node* p = cList.semester[i].pHead;
+        if (!p) continue;
+        os << "------------------------------------------------------------------------------------------------------------\n";
+        for (; p != nullptr; p = p->pNext)
         {
-            os << "\t";
-            if (p == nullptr) 
-                os << "[NULL]";
-            else os << p->c;
+            os << p->c;
         }
     }
     return os;

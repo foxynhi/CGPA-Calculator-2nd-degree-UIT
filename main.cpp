@@ -19,7 +19,8 @@ int main()
     cin >> s;
     cout << endl;
 
-    cout << "Option menu:\n1. Show model curriculum\n2. Show student information\n3. Add course manually\n4. Add course from curriculum\n5. Delete course\n6. Update course\n7. Set point for a course\n8. Calculate GPA of a semester\n9. Calculate CGPA by course\n10. Calculate CGPA by semester\n11. See menu\n12. Exit" << endl;
+    cout << "\n-------------------------Option menu--------------------------" << endl;
+    cout << "1. Show model curriculum\n2. Show student information\n3. Add course manually\n4. Add course from curriculum\n5. Delete course\n6. Update course\n7. Set point for a course\n8. Calculate GPA of a semester\n9. Calculate CGPA by course\n10. Calculate CGPA by semester\n11. See menu\n12. Exit" << endl;
     cout << "--------------------------------------------------------------" << endl;
 
     CL cl;
@@ -38,29 +39,31 @@ int main()
         switch (option)
         {                       
             case 1:
-                //Show model curriculum by semester
+                //Show model curriculum by semester    
+                cout << "\n-----------------------------------------------Model curriculum---------------------------------------------" << endl;
                 cout << cl << endl;
                 break;
             case 2:
-                //Show a student's information
+                //Show a student information
+                cout << "\n-----------------------Student information--------------------" << endl;
                 cout << s << endl;
                 break;
             case 3:
             {
                 //Add course from user
+                cout << "\n--------------------------Add course--------------------------" << endl;
                 Course course;
-                cin >> course;      //Ensured to be valid
-                cout << course << endl;
+                cin >> course;
                 s.cList.addCourse(course);
                 s.n = s.cList.getCount();
-                cout << "Course added successfully!" << endl << endl;
+                cout << "Course added successfully!" << endl;
                 break;
             }
             case 4:
             {
                 //Add course from curriculum
+                cout << "\n--------------------------Add course--------------------------" << endl;
                 string id = validateIDInput();
-                int sem = validateSemesterInput();
 
                 Node* node = cl.findNode(id);
                 if (!node){
@@ -68,15 +71,17 @@ int main()
                     break;
                 }
 
+                int sem = validateSemesterInput();
                 if (s.addCourse(cl,id,sem))
                     cout << "Course added successfully!" << endl;
                 else
                     cout << "Error adding course..." << endl;
                 break;
             }
-            case 5:
+            case 5:                                                                 //DONE
             {
                 //Delete a course from student's course list
+                cout << "\n------------------------Delete course-------------------------" << endl;
                 string id = validateIDInput();
                 int sem = validateSemesterInput();        
 
@@ -91,6 +96,7 @@ int main()
             case 6:                                                                 //DONE
             {
                 //Update a cousre
+                cout << "\n------------------------Update course-------------------------" << endl;
                 string id = validateIDInput();
                 Node* node = s.cList.findNode(id);
                 if (!node){
@@ -116,6 +122,7 @@ int main()
             case 7:                                                                 //DONE
             {
                 //Set point for a course
+                cout << "\n--------------------------Set point---------------------------" << endl;
                 string id = validateIDInput();
                 int sem = validateSemesterInput();
 
@@ -131,9 +138,10 @@ int main()
                     cout << "Error setting point..." << endl;
                 break;
             }
-            case 8:
+            case 8:                                                                 //DONE
             {   
-                //Calcualate GPA of a semester
+                //Calcualate GPA for a semester
+                cout << "----------------Calcualate GPA for a semester-----------------" << endl;
                 int sem = validateSemesterInput();
                 float semGPA = s.calcSemesterGPA(sem);
                 cout << "GPA of semester " << sem+1 << " = " << semGPA << endl;
@@ -142,19 +150,22 @@ int main()
             case 9:
             {
                 //Calcualate CGPA of a Student devided by course
+                cout << "\n-------------------Calculate CGPA by course-------------------" << endl;
                 float CGPA = s.calcCGPAbyCourse();
                 cout << "CGPA of student \"" << s.id << "\" = " << CGPA << endl;
                 break;
             }
-            case 10:
+            case 10:                                                                 //DONE
             {
                 //Calcualate CGPA of a Student devided by semester
+                cout << "\n------------------Calculate CGPA by semester------------------" << endl;
                 float CGPA = s.calcCGPAbySemester();
                 cout << "CGPA of student \"" << s.id << "\" = " << CGPA << endl;
                 break;
             }
-            case 11:
-                cout << "Option menu:\n1. Show model curriculum\n2. Show student information\n3. Add course manually\n4. Add course from curriculum\n5. Delete course\n6. Update course\n7. Set point for a course\n8. Calculate GPA of a semester\n9. Calculate CGPA by course\n10. Calculate CGPA by semester\n11. See menu\n12. Exit" << endl;
+            case 11: 
+                cout << "\n-------------------------Option menu--------------------------" << endl;
+                cout << "1. Show model curriculum\n2. Show student information\n3. Add course manually\n4. Add course from curriculum\n5. Delete course\n6. Update course\n7. Set point for a course\n8. Calculate GPA of a semester\n9. Calculate CGPA by course\n10. Calculate CGPA by semester\n11. See menu\n12. Exit" << endl;
                 cout << "--------------------------------------------------------------" << endl;
                 continue;
             case 12:
