@@ -44,6 +44,10 @@ void CourseList::addCourse(Course c)
 
 ostream& operator<<(ostream& os, CourseList& cList)
 {
+    if (cList.semester[0].pHead == nullptr){
+        os << "No course data available." << endl;
+        return os;
+    }
     os << "| " << setw(5) << left << "ID" << " | "
         << setw(38) << left << "Course Name" << " | "
         << setw(10) << left << "Total cre." << " | "
@@ -61,6 +65,7 @@ ostream& operator<<(ostream& os, CourseList& cList)
             os << p->c;
         }
     }
+    os << "------------------------------------------------------------------------------------------------------------\n";
     return os;
 }
 void CourseList::initDataFromCSV(const string& file)

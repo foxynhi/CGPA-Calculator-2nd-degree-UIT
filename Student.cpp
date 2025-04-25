@@ -7,7 +7,9 @@ using namespace std;
 
 ostream& operator<<(ostream& os, Student& s)
 {
-    os << s.id << "; " << s.name << "; " << s.n << " courses:\n" << s.cList; 
+    os << "ID: " << s.id 
+        << "\nName: " << s.name 
+        << "\n" << s.n << " courses\n\n" << s.cList; 
     return os;
 }
 
@@ -53,10 +55,13 @@ bool Student::setPoint(string targetId, int sem, float p)
 
 float Student::calcSemesterGPA(int sem)
 {
+    Node* p = cList.semester[sem].pHead;
+    if (p == nullptr) 
+        return 0;
     int count = 0;
     float sum = 0;
     
-    for (Node* p = cList.semester[sem].pHead; p != nullptr; p = p->pNext){
+    for (; p != nullptr; p = p->pNext){
         sum += p->c.point * p->c.tolCredit;
         count += p->c.tolCredit;
     }
@@ -65,6 +70,8 @@ float Student::calcSemesterGPA(int sem)
 
 float Student::calcCGPAbySemester()
 {
+    if (cList.getCount() == 0) 
+        return 0;
     float sum = 0;
     int sem = 0;
     for (int i = 0; i < N; i++){
@@ -73,12 +80,13 @@ float Student::calcCGPAbySemester()
         sum += calcSemesterGPA(i);
         sem++;
     }
-    cout << "Calculate GPA by Semester:\nSemester counted: " << sem << endl;
     return round(sum / sem * 100) / 100.;
 }
 
 float Student::calcCGPAbyCourse()
 {
+    if (cList.getCount() == 0) 
+        return 0;
     float sum = 0;
     int count = 0;
     for (int i = 0; i < N; i++){
@@ -90,7 +98,6 @@ float Student::calcCGPAbyCourse()
             count += p->c.tolCredit;
         }
     }
-    cout << "Calculate GPA by Course:\nCredits counted: " << count << endl;
     return round(sum / count * 100) / 100.;
 
 }

@@ -31,7 +31,7 @@ ostream& operator<<(ostream& os, Course& c)
         << setw(12) << left << c.lecCredit << " | "
         << setw(8) << left << c.labCredit << " | "
         << setw(5) << left << c.point << " | "
-        << setw(8) << left << c.semester << " | " << endl;
+        << setw(8) << left << c.semester+1 << " | " << endl;
     return os;
 }
 Course Course::operator=(const Course& c)

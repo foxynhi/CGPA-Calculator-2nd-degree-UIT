@@ -30,10 +30,10 @@ struct Student
     //Calcualate GPA for a semester
     float calcSemesterGPA(int sem);
 
-    //Calcualate CGPA of a Student devided by semester
+    //Calcualate CGPA of a Student divided by semester
     float calcCGPAbySemester();
 
-    //Calcualate CGPA of a Student devided by course
+    //Calcualate CGPA of a Student divided by course
     float calcCGPAbyCourse();
 };
 

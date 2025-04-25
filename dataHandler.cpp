@@ -172,7 +172,7 @@ int validateTolCreditInput()
 {
     int tolCre;
     while (true){
-        cout << "Enter total credit (0-8): ";
+        cout << "Enter total credit (0-10): ";
         cin >> tolCre;
         if (cin.fail()){
             cout << "Invalid input. Total credit must be a number." << endl;
@@ -180,9 +180,9 @@ int validateTolCreditInput()
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
             continue;
         }
-        if (tolCre >= 0 && tolCre <= 8)
+        if (tolCre >= 0 && tolCre <= 10)
             break;
-        else cout << "Error: Total credit must be in range [0-8]" << endl;
+        else cout << "Error: Total credit must be in range [0-10]" << endl;
     }
     return tolCre;
 }
