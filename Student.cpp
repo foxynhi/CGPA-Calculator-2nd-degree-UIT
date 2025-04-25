@@ -10,12 +10,19 @@ ostream& operator<<(ostream& os, Student& s)
     os << s.id << "; " << s.name << "; " << s.n << " courses:\n" << s.cList; 
     return os;
 }
+
 istream& operator>>(istream& is, Student& s)
 {
     cout << "Enter student information:\n";
-    cout << "ID (123): ";
-    is.ignore(numeric_limits<streamsize>::max(), '\n');
-    is >> s.id;
+    while (true) {
+        cout << "ID (123): ";
+        is >> s.id;
+        if (is.fail()){
+            cout << "Invalid input. ID must be a number." << endl;
+            is.clear();
+            is.ignore(numeric_limits<streamsize>::max(), '\n');
+        } else break;
+    }
     cout << "Name (Nguyen Van An): ";
     is.ignore(numeric_limits<streamsize>::max(), '\n');
     getline(is, s.name);

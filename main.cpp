@@ -7,14 +7,9 @@
 #include "dataHandler.h"
 #include "Student.h"
 #include "cctype"
+#include "limits"
 using namespace std;
 
-void strUpper(string& s)
-{
-    for (char& x : s){
-        x = (char)toupper(x);
-    }
-}
 
 int main()
 {
@@ -28,7 +23,8 @@ int main()
     cout << "--------------------------------------------------------------" << endl;
 
     CL cl;
-    cl.initDataFromCSV("./course-data/courses.csv");
+    string path = string(PROJECT_ROOT) + "/course-data/courses.csv";
+    cl.initDataFromCSV(path);
     
     int option = 0;
     while (true) {
@@ -63,24 +59,14 @@ int main()
             case 4:
             {
                 //Add course from curriculum
-                string id;
-                int sem;                                                            //Need to validate
-                cout << "Enter course ID to add (IT001): ";
-                cin >> id;
-                strUpper(id);
+                string id = validateIDInput();
+                int sem = validateSemesterInput();
+
                 Node* node = cl.findNode(id);
                 if (!node){
                     cout << "Error: Course ID \"" << id << "\" not found!" << endl;
                     break;
                 }
-
-                while (true){
-                    cout << "Enter semester taken that course (1-6): ";
-                    cin >> sem;
-                    if (sem >= 1 && sem <= 6)
-                        break;
-                }                
-                sem--;
 
                 if (s.addCourse(cl,id,sem))
                     cout << "Course added successfully!" << endl;
@@ -91,18 +77,9 @@ int main()
             case 5:
             {
                 //Delete a course from student's course list
-                string id;
-                int sem;
-                cout << "Enter course ID to delete: ";
-                cin >> id;
-                strUpper(id);
-                while (true){
-                    cout << "Enter semester taken that course (1-6): ";
-                    cin >> sem;
-                    if (sem >= 1 && sem <= 6)
-                        break;
-                }
-                sem--;
+                string id = validateIDInput();
+                int sem = validateSemesterInput();        
+
                 if (s.cList.deleteCourse(id, sem)){
                     cout << "Course deleted successfully!" << endl;
                     s.n = s.cList.getCount();
@@ -111,80 +88,43 @@ int main()
                     cout << "Error deleting course..." << endl;
                 break;
             }
-            case 6:
+            case 6:                                                                 //DONE
             {
                 //Update a cousre
-                string id;
-                cout << "Enter course ID to update: ";
-                cin >> id;
-                strUpper(id);
+                string id = validateIDInput();
                 Node* node = s.cList.findNode(id);
                 if (!node){
                     cout << "Error: Course ID \"" << id << "\" not found!" << endl;
                     break;
                 }
 
-                string name, token;
+                string name;
                 cout << "Name (Enter if no change): ";
-                cin.ignore();
                 getline(cin, name);
                 if (!name.empty())
                     node->c.name = name;
 
-                cout << "Total credit (Enter if no change): ";
-                getline(cin, token);
-                if (!token.empty())
-                    node->c.tolCredit = stoi(token);
-                
-                cout << "Lecture credit (Enter if no change): ";
-                getline(cin, token);
-                if (!token.empty())
-                    node->c.lecCredit = stoi(token);
-
-                cout << "Lab credit (Enter if no change): ";
-                getline(cin, token);
-                if (!token.empty())
-                    node->c.labCredit = stoi(token);
-
-                cout << "Point (Enter if no change): ";
-                getline(cin, token);
-                if (!token.empty())
-                    node->c.point = stoi(token);
-                
-                cout << "Semester (Enter if no change): ";
-                getline(cin, token);
-                if (!token.empty())
-                    s.cList.changeSemester(node, stoi(token)-1);
+                node->c.tolCredit = validateTolCreditInput();
+                node->c.lecCredit = validateLecCreditInput(node->c.tolCredit);
+                node->c.labCredit = node->c.tolCredit - node->c.lecCredit;
+                node->c.point = validatePointInput();
+                s.cList.changeSemester(node, validateSemesterInput());
 
                 cout << "Course updated successfully!" << endl;
                 break;
             }
-            case 7:
+            case 7:                                                                 //DONE
             {
                 //Set point for a course
-                string id;
-                int sem;
-                float poi;
-                cout << "Enter course ID to set point (IT001): ";
-                cin >> id;
-                strUpper(id);
-                while (true){
-                    cout << "Enter semester taken that course (1-6): ";
-                    cin >> sem;
-                    if (sem >= 1 && sem <= 6)
-                        break;
-                }
-                sem--;
+                string id = validateIDInput();
+                int sem = validateSemesterInput();
+
                 if (!s.cList.findNode(id,sem)){
                     cout << "Error: Course ID \"" << id << "\" not found!" << endl;
                     break;
                 }
-                cout << "Enter point (0-10): ";
-                cin >> poi;
-                if (poi < 0 || poi > 10){
-                    cout << "Error: Point must be in scale of 10." << endl;
-                    break;
-                }
+                
+                float poi = validatePointInput();
                 if (s.setPoint(id,sem,poi)){
                     cout << "Set point for course \"" << id << "\" successfully!" << endl;
                 } else
@@ -194,14 +134,7 @@ int main()
             case 8:
             {   
                 //Calcualate GPA of a semester
-                int sem;
-                while (true){
-                    cout << "Enter semester to calculate GPA: ";
-                    cin >> sem;
-                    if (sem >= 1 && sem <= 6)
-                        break;
-                }
-                sem--;
+                int sem = validateSemesterInput();
                 float semGPA = s.calcSemesterGPA(sem);
                 cout << "GPA of semester " << sem+1 << " = " << semGPA << endl;
                 break;
@@ -226,7 +159,6 @@ int main()
                 continue;
             case 12:
                 exit(0);
-                break;
         }
     }
 
