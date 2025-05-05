@@ -88,7 +88,6 @@ By completing this project, I gained hands-on experience with:
 3. **File Handling**:
    - Load course data from a CSV file using `initDataFromCSV`.
 
-
 ## Build and Run
 
 ### Prerequisites:
