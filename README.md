@@ -58,7 +58,5 @@ This project demonstrates the following programming concepts:
 
 3. **File Handling**:
    - Load course data from a CSV file using `initDataFromCSV`.
-   - Save student data to a file for future retrieval.
-
 ---
 -- *Foxy Nhi* --
