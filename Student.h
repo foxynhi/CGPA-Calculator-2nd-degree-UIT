@@ -35,6 +35,8 @@ struct Student
 
     //Calcualate CGPA of a Student divided by course
     float calcCGPAbyCourse();
+
+    
 };
 
 #endif
