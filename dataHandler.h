@@ -4,6 +4,7 @@ using namespace std;
 #define CSVHANDLER_H
 #pragma once
 
+
 //Initialize Course data manually to courses.csv
 void initDataManual2CSV();
 
@@ -14,4 +15,11 @@ void initDataFromCSV2CSV(const string& file);
 //Delete Course data from CSV with target id
 void deleteCourseFromCSV(const string& file, string targetId);
 
+void strUpper(string& s);
+
+string validateIDInput();
+int validateTolCreditInput();
+int validateLecCreditInput(int labCre);
+float validatePointInput();
+int validateSemesterInput();
 #endif

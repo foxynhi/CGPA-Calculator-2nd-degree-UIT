@@ -13,3 +13,4 @@ add_executable(cgpa
     Student.cpp
     dataHandler.cpp
 )
+target_compile_definitions(cgpa PRIVATE PROJECT_ROOT="${CMAKE_SOURCE_DIR}")

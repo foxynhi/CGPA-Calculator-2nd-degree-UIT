@@ -23,12 +23,11 @@ struct Course
         : id(i), name(n), tolCredit(t), lecCredit(lec), labCredit(lab), point(p), semester(s) {}
     Course(const Course& x)
         : id(x.id), name(x.name), tolCredit(x.tolCredit), lecCredit(x.lecCredit), labCredit(x.labCredit), point(x.point), semester(x.semester) {}
-    ~Course(){};
+        
     friend istream& operator>>(istream& is, Course& c);
     friend ostream& operator<<(ostream& os, Course& c);
     Course operator=(const Course& c);
     string toCSV() const;
-    
 };
 
 #endif
